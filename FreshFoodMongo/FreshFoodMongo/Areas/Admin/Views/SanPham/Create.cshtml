@@ -1,0 +1,126 @@
+﻿@model FreshFoodMongo.Models.DTO.SanPham
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Sản phẩm - Thêm sản phẩm
+}
+
+
+
+@using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <table style="width:100%">
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="width:25%">
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Tên sản phẩm</label>
+                            <input type="text" class="form-control" name="ten" placeholder="Nhập tên sản phẩm ..." value=" @Html.DisplayFor(model => model.Ten)" style="width:740px" required>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Loại sản phẩm</label><br />
+                            @Html.DropDownList("IDTheLoai", (IEnumerable<SelectListItem>)ViewBag.CategoryList, "  --  Loại sản phẩm  --  ", new { @class = "combobox", @style = "height:32px; width:332px; required" })
+
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Ngày cập nhật</label>
+                            <input type="date" class="form-control" name="updated" placeholder="Ngày cập nhật ..." value=@Html.Raw(DateTime.Now) style="width:332px" disabled>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Đơn vị tính</label><br />
+                            <input type="text" class="form-control" name="donvitinh" placeholder="Nhập đơn vị tính ..." value=" @Html.DisplayFor(model => model.DonViTinh)"  required>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Số lượng</label><br />
+                            <input type="number" step="1" min="0" class="form-control" name="soluong" placeholder="Nhập số lượng  ..." value=" @Html.DisplayFor(model => model.SoLuong)" required>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Giá tiền (VNĐ)</label><br />
+                            <input type="number" step="100" min="0" class="form-control" name="giatien" placeholder="Nhập giá tiền  ..." value=" @Html.DisplayFor(model => model.GiaTien)" required>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Giá khuyến mại (VNĐ)</label><br />
+                            <input type="number" step="100" min="0" class="form-control" name="giakhuyenmai" placeholder="Nhập giá khuyến mại  ..." value=" @Html.DisplayFor(model => model.GiaKhuyenMai)" required>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputEmail1">Thông tin sản phẩm</label>
+                            <textarea name="mota" id="mota" class="form-control" rows="10" placeholder="Thêm thông tin sản phẩm ..." style="width: 740px; resize:none; text-align:justify">@Html.DisplayFor(model => model.MoTa)</textarea>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+                <td style="vertical-align:top">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="exampleInputFile">Hình ảnh sản phẩm</label>
+                            <input type="file" id="hinhanh" name="hinhanh" required>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary" style="width:110px">
+            <i class="fa fa-save"></i> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <i class="fa fa-th-list"></i> &nbsp;
+            @Html.ActionLink("Danh sách", "Index")
+        </button>
+    </div>
+}

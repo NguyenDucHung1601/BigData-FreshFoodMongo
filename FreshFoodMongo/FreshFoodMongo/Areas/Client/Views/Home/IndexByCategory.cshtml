@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+}
+
+@{
+    FreshFoodMongo.Models.DAO.BaseDAO baseDao = new FreshFoodMongo.Models.DAO.BaseDAO();
+    FreshFoodMongo.Models.DTO.ThongTinLienHe info = baseDao.getDataThongTinLienHe().FirstOrDefault();
+}
+
+@section Title{
+    FreshFoodMongo | Trang chủ
+}
+
+@section Styles
+{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li class="active"><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                    <li><a href="/Client/Account/Index/@Session["IDUSER_SESSION"]" style="font-size: 17px;">Hồ sơ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutHome")
+
+@Html.Action("CategoryShowImage")
+
+
+<section class="featured spad">
+    <div class="container">
+
+        <div class="section-title">
+            <hr />
+            <h3><b>Danh mục</b> <b style="color:green">@ViewBag.CategoryName.ToUpper()</b> (@Model.Count sản phẩm )</h3>
+        </div>
+
+        <div class="row featured__filter">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@item.HinhAnh">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="/Client/ProductDetail/Index/@item.IDSanPham.ToString()"><i class="fa fa-info"></i></a></li>
+                                <li><a href="/Client/ShoppingCart/AddItem?productId=@item.IDSanPham&quantity=1"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="/ShopDetail/Index/@item.IDSanPham">@item.Ten</a></h6>
+                            <h5>@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+}
+
+

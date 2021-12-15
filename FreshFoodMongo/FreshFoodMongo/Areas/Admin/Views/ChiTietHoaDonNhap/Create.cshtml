@@ -1,0 +1,41 @@
+﻿@model FreshFoodMongo.Models.DTO.ChiTietHoaDonNhap
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Hoá đơn nhập (@ViewBag.MaSoHoaDonNhap) - Thêm chi tiết hoá đơn
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Sản phẩm nhập</label><br />
+                @Html.DropDownList("IDSanpham", (IEnumerable<SelectListItem>)ViewBag.ListSPCungUng, "  --  Sản phẩm --  ", new { @class = "combobox", @style = "height:32px; width:332px; required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Số lượng</label><br />
+                <input type="number" min="1" step="1" class="form-control" name="soluong" placeholder="Nhập số lượng ..." value=" @Html.DisplayFor(model => model.SoLuong)" required>
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary" value="Create" style="width:110px">
+            <i class="fa fa-save"></i> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <a class="fa fa-arrow-left"></a> &nbsp;
+            @Html.ActionLink("Trở về", "Details", "HoaDonNhap", new { id = ViewBag.IDHoaDonNhap }, null)
+        </button>
+    </div>
+}

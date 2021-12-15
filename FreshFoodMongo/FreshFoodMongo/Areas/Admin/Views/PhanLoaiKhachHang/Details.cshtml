@@ -1,0 +1,52 @@
+﻿@model FreshFoodMongo.Models.DTO.PhanLoaiKhachHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Phân loại khách hàng (@Model.Ten)
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Cấp độ:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CapDo)
+        </dd>
+        <dt>
+            Tên phân loại:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+        <dt>
+            Điều kiện:
+        </dt>
+        <dd>
+            - Số đơn hàng tối thiểu: @Html.DisplayFor(model => model.SoDonHangToiThieu)
+        </dd>
+        <dd>
+            - Tổng tiền hàng tối thiểu: @Html.DisplayFor(model => model.TongTienHangToiThieu) VNĐ
+        </dd>
+        <dt>
+            Mô tả:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DieuKien)
+        </dd>
+    </dl>
+</div>
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDLoaiKhachHang })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

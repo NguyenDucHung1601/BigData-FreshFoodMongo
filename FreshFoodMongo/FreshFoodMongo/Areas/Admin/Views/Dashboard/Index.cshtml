@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Tổng quan
+}
+<style>
+    div a {
+        color: navy;
+    }
+</style>
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@ViewBag.TongHoaDonNhap</h3>
+                    <p>Tổng số hoá đơn nhập</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@ViewBag.TongDonHang</h3>
+                    <p>Tổng số đơn hàng</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>@String.Format("{0:n0}", ViewBag.DoanhThu) VNĐ</h3>
+                    <p>Tổng doanh thu</p>
+                </div>
+
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@ViewBag.TongSoThanhVien</h3>
+                    <p>Tổng số khách hàng thành viên</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <hr />
+        &nbsp;
+        <hr />
+        <h4><i class="fa fa-hand-o-right"></i><b style="color:darkgreen">&nbsp;Báo cáo thống kê</b></h4>
+        <div style="font-size:15px">
+            <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Thống kê Khách hàng tiềm năng", "KhachHangTiemNang", "Baocao")<br />
+            <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Thống kê Sản phẩm bán chạy", "SanPhamBanChay", "Baocao")<br />
+            <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Thống kê Sản phẩm nhập vào", "SanPhamNhapVao", "Baocao")<br />
+            <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Thống kê Sản phẩm bán ra", "SanPhamBanRa", "Baocao")<br />
+            <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Thống kê Doanh thu cửa hàng", "DoanhThuSanPham", "Baocao")<br />
+        </div>
+    </div><!-- /.row -->
+</section>
+
+
+

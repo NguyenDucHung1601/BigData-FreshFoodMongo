@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Title{
+    FreshFoodMongo | Trang chủ
+}
+
+@section Styles
+{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li class="active"><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                    <li><a href="/Client/Account/Index/@Session["IDUSER_SESSION"]" style="font-size: 17px;">Hồ sơ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutHome")
+
+@Html.Action("CategoryShowImage")
+
+<section class="latest-product spad">
+    <div class="container">
+        <div class="row">
+
+            @Html.Action("ProductTopNew")
+
+            @Html.Action("ProductTopSale")
+
+            @Html.Action("ProductTopReview")
+
+        </div>
+    </div>
+</section>
+
+@Html.Action("SaleOff")
+
+@Html.Partial("ProductSearchShow")
+
+<section class="featured spad">
+    <div class="container">
+
+        @Html.Action("ListCategoryShow")
+
+        @Html.Partial("ProductFilterShow")
+
+    </div>
+</section>
+
+
+@section Scripts
+{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+}
+
+

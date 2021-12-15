@@ -1,0 +1,60 @@
+﻿@model FreshFoodMongo.Models.DTO.PhanLoaiKhachHang
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Phân loại khách hàng - Thêm phân loại
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Cấp độ</label>
+                <input type="number" min="0" step="1" class="form-control" name="capdo" placeholder="Nhập cấp độ ..." value=" @Html.DisplayFor(model => model.CapDo)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Tên phân loại</label>
+                <input type="text" class="form-control" name="ten" placeholder="Nhập tên phân loại ..." value=" @Html.DisplayFor(model => model.Ten)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Số đơn hàng tối thiểu</label>
+                <input type="number" min="0" step="1" class="form-control" name="sodonhangtoithieu" placeholder="Nhập số đơn hàng tối thiểu ..." value=" @Html.DisplayFor(model => model.SoDonHangToiThieu)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Tổng tiền hàng tối thiểu (VNĐ)</label>
+                <input type="number" min="0" step="1000" class="form-control" name="tongtienhangtoithieu" placeholder="Nhập tổng tiền hàng tối thiểu ..." value=" @Html.DisplayFor(model => model.TongTienHangToiThieu)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Mô tả</label>
+                <input type="text" class="form-control" name="dieukien" placeholder="Nhập mô tả ..." value=" @Html.DisplayFor(model => model.DieuKien)" required>
+            </div>
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary" style="width:110px">
+            <a class="fa fa-save"></a> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <a class="fa fa-th-list"></a> &nbsp;
+            @Html.ActionLink("Danh sách", "Index")
+        </button>
+    </div>
+}

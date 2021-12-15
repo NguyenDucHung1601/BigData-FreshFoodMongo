@@ -1,0 +1,321 @@
+﻿@model PagedList.IPagedList<FreshFoodMongo.Models.DTO.DonHang>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.BaseDAO baseDao = new FreshFoodMongo.Models.DAO.BaseDAO();
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+    var idKH = (Guid)Session["IDUSER_SESSION"];
+    var khachHang = baseDao.getDataNguoiDung().FirstOrDefault(x => x.IDNguoiDung == idKH);
+    var lstDonHang = baseDao.getDataDonHang().Where(x=>x.IDKhachHang == idKH);
+
+    int i;
+    if (Model.Count == ViewBag.psize)
+    {
+        i = Model.PageNumber * Model.Count - Model.Count;
+    }
+    else
+    {
+        i = ViewBag.Count - Model.Count;
+    }
+
+    string GetSTT()
+    {
+        i++;
+        return Convert.ToString(i);
+    }
+}
+
+@section Title{
+    FreshFood HTH | Hồ sơ tài khoản
+}
+
+@section Styles
+{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Admin/otherAssets/style.css" type="text/css">
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                    <li class="active"><a href="/Client/Account/Index/@Session["IDUSER_SESSION"]" style="font-size: 17px;">Hồ sơ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutOtherHome")
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg " data-setbg="/Assets/Client/img/breadcrumb.png">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-12 text-center ">
+                <div class="breadcrumb__text ">
+                    <h2>Hồ sơ tài khoản</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Product Details Section Begin -->
+<section class="product-details spad" style="padding-bottom:unset">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="~/Areas/Admin/Content/Photos/@Session["AVATAR_SESSION"]" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@khachHang.Ten</h3>
+                    <div><i class="fa fa-user" style="color:green"></i> <b>Tên đăng nhập:</b> <span style="color:green; font-weight:bold">@khachHang.Username</span></div>
+                    <div><i class="fa fa-phone" style="color:green"></i> <b>Số điện thoại:</b> <span>@khachHang.DienThoai</span></div>
+                    <div><i class="fa fa-envelope" style="color:green"></i> <b>Email:</b> <span>@khachHang.Email</span></div>
+                    <div><i class="fa fa-home" style="color:green"></i> <b>Địa chỉ:</b> <span>@khachHang.DiaChi</span></div>
+                    <br />
+                    @switch (commonDao.getRf_CapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang))
+                    {
+                        case 0:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:darkslategrey; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        case 1:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:crimson; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        case 2:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:silver; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        case 3:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:goldenrod; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        case 4:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:skyblue; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        case 5:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:purple; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                        default:
+                            <div><i class="fa fa-trophy" style="color:green"></i> <b>Xếp hạng:</b><span style="color:green; font-weight:bold"> @commonDao.getRf_TenCapDoPhanLoaiKhachHang((Guid)khachHang.IDLoaiKhachHang)</span></div>
+                            break;
+                    }
+
+                    <div><i class="fa fa-navicon" style="color:green"></i> <b>Số đơn hàng đã mua:</b> <span>@khachHang.SoDonHangDaMua</span></div>
+                    <div><i class="fa fa-money" style="color:green"></i> <b>Tổng tiền hàng đã mua:</b> <span>@String.Format("{0:n0}", khachHang.TongTienHangDaMua) VNĐ</span></div>
+                    <br /><br />
+                    <button type="button" class="site-btn" style="text-align:left; width:195px"><i class="fa fa-edit"></i> &nbsp; @Html.ActionLink("Chỉnh sửa", "Edit", "Account", new { id = Session["IDUSER_SESSION"] }, null)</button>
+                    <br /><br />
+                    <button type="button" class="site-btn" style="text-align:left; width:195px"><i class="fa fa-key"></i> &nbsp; @Html.ActionLink("Đổi mật khẩu", "ChangePassword", "Account", new { id = Session["IDUSER_SESSION"] }, null)</button>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
+<!-- List Order Buyed -->
+<div class="row">
+    <div class="col-md-1"></div>
+    <section class="col-md-10">
+        <h4><b>Đơn hàng của tôi</b></h4>
+
+        <table style="width:100%; margin-bottom:10px">
+            <tr>
+                <td style="float:right">
+                    @using (Html.BeginForm("Index", "Account", FormMethod.Get, new { id = "form1" }))
+                    {
+                        <input type="text" name="searching" value="@ViewBag.SearchString" placeholder="Nhập thông tin tìm kiếm ..." style="width: 400px;" />
+                        <input type="submit" value="Tìm kiếm" />
+                    }
+                </td>
+            </tr>
+        </table>
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Người nhận:
+                    </th>
+                    <th>
+                        Tiền hàng:
+                    </th>
+                    <th>
+                        Tiền ship:
+                    </th>
+                    <th>
+                        Giảm giá:
+                    </th>
+                    <th>
+                        Tổng tiền:
+                    </th>
+                    <th>
+                        Phương thức thanh toán:
+                    </th>
+                    <th>
+                        Trạng thái:
+                    </th>
+                    <th>
+                        Ngày đặt hàng:
+                    </th>
+                    <th>
+                        Xác nhận:
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(commonDao.getRf_TenNguoiDung(item.IDKhachHang))
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TienHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TienShip)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TienGiam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongTien)
+                        </td>
+                        <td>
+                            @Html.Raw(commonDao.getRf_TenPhuongThucThanhToan(item.IDPhuongThucThanhToan))
+                        </td>
+                        <td>
+                            @Html.Raw(commonDao.getRf_TenTrangThai(item.IDTrangThai))
+                        </td>
+                        <td>
+                            @Html.Raw(Convert.ToDateTime(item.CreatedDate).ToString("dd/MM/yyyy"))
+                        </td>
+                        <td>
+                            @if (commonDao.getRf_TenTrangThai(item.IDTrangThai) == "Đang giao hàng")
+                            {
+                                <i class="fa fa-check-square-o"></i> @*&nbsp;*@
+                                @Html.ActionLink("Đã nhận", "Accept", new { id = item.IDDonHang }, new { onclick = "return confirm('Xác nhận đã nhận hàng?');", @class = "btn_accept" })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @using (Html.BeginForm("Index", "Account", FormMethod.Get, new { id = "form1" }))
+        {
+            <div class="pager">
+                <table style="width:100%">
+                    <col style="width:50%">
+                    <col style="width:50%">
+                    <tr>
+                        <td style="float:left">
+                            <b style="color:navy">
+                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount &nbsp;&nbsp;-&nbsp;&nbsp;
+                                @if (Model.Count == ViewBag.psize)
+                                {
+                                    <span>Đang hiển thị (@(((Model.PageNumber * Model.Count) - Model.Count) + 1)-@(Model.PageNumber * Model.Count)) / @ViewBag.Count</span>
+                                }
+                                else
+                                {
+                                    <span>Đang hiển thị (@((ViewBag.Count - Model.Count) + 1)-@(ViewBag.Count)) / @ViewBag.Count</span>
+                                }
+                            </b>
+                        </td>
+                        <td style="float:right;">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = ViewBag.psize, @searching = @ViewBag.SearchString }))
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </section>
+</div>
+<!-- List Order Buyed -->
+
+
+<script src="~/Assets/Admin/LTE/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $("#checkAll").click(function () {
+            if (this.checked) {
+                $(".chkbox").prop('checked', $(this).prop('checked', true));
+            }
+            else {
+                $('.chkbox').each(function () { this.checked = false; });
+            }
+        });
+        $('.chkbox').on('click', function () {
+            if ($('.chkbox:checked').length == $('.chkbox').length) {
+                $('#checkAll').prop('checked', true);
+            } else {
+                $('#checkAll').prop('checked', false);
+            }
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#pageSize").change(function () {
+            $("#form1").submit();
+        });
+    });
+</script>
+
+
+@section Scripts{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".quantity input").change(function () {
+                var value = $(".quantity input").text;
+                var item = $(".quantity input").offsetParent().
+                    $("#form1").submit();
+            });
+        });
+    </script>
+    <script src="/Assets/Client/Controller/ShopDetailController.js"></script>
+
+}
+

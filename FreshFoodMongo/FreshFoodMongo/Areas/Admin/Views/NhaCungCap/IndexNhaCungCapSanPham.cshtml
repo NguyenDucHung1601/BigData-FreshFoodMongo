@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.NhaCungCapSanPham>
+@{
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+ }
+
+<button type="button" class="btn btn-success btn-admin" style="margin:5px; margin-left:unset; float:right">
+    <i class="fa fa-plus-square"></i> &nbsp;
+    @Html.ActionLink("Thêm sản phẩm cung ứng", "Create", "NhaCungCapSanPham", new { idncc = ViewBag.IDNhaCungCap }, new { @class = "" })
+</button>
+
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Đơn vị tính
+            </th>
+            <th>
+                Giá cung ứng (VNĐ)
+            </th>
+            <th>
+                Ngày cập nhật
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(commonDao.getRf_TenSanPham(item.IDSanPham))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonViTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaCungUng)
+                </td>
+                <td>
+                    @Html.Raw(Convert.ToDateTime(item.NgayCapNhat).ToString("dd/MM/yyyy"))
+                </td>
+                <td>
+                    @*<i class="fa fa-info-circle"></i> &nbsp;
+                        @Html.ActionLink("Xem", "Details", "ChiTietHoaDonNhaps", new { id = item.IDChiTietHoaDonNhap , idhdn = ViewBag.IDHoaDonNhap }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+                    <i class="fa fa-edit"></i> &nbsp;
+                    @Html.ActionLink("Sửa", "Edit", "NhaCungCapSanPham", new { id = item.IDNhaCungCapSanPham }, new { @class = "" }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash"></i> &nbsp;
+                    @Html.ActionLink("Xóa", "Delete", "NhaCungCapSanPham", new { id = item.IDNhaCungCapSanPham }, new { onclick = "return confirm('Chắc chắn muốn xoá?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

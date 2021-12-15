@@ -1,0 +1,218 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.BaseDAO baseDao = new FreshFoodMongo.Models.DAO.BaseDAO();
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+    Guid idnguoidung = (Guid)Session["IDUSER_SESSION"];
+    List<FreshFoodMongo.Models.DTO.TKThanhToanNguoiDung> listTKTT = baseDao.getDataTKThanhToanNguoiDung().Where(x => x.IDNguoiDung == idnguoidung).ToList();
+    //List<FreshFoodMongo.Models.DTO.TaiKhoanThanhToan> listTKTT = db.TaiKhoanThanhToans.ToList();
+}
+
+@section Title{
+    FreshFood HTH | Thanh toán
+}
+
+@section Styles
+{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Admin/otherAssets/style.css" type="text/css">
+    <style>
+        .nice-select {
+            width: 360px;
+            height: 40px;
+        }
+    </style>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li class="active"><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                    <li><a href="/Client/Account/Index/@Session["IDUSER_SESSION"]" style="font-size: 17px;">Hồ sơ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutOtherHome")
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg " data-setbg="/Assets/Client/img/breadcrumb.png">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-12 text-center ">
+                <div class="breadcrumb__text ">
+                    <h2>Thanh toán</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <h4>Chi tiết đơn hàng</h4>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1"><b>Họ tên</b></label>
+                                <input type="text" class="form-control" value=" @ViewBag.User.Ten" readonly>
+                                <br />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1"><b>Điện thoại</b></label>
+                                <input type="text" class="form-control" value=" @ViewBag.User.DienThoai" required>
+                                <br />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="exampleInputEmail1"><b>Email</b></label>
+                                <input type="text" class="form-control" value=" @ViewBag.User.Email" required>
+                                <br />
+                            </div>
+                            <div class="col-md-12">
+                                <label for="exampleInputEmail1"><b>Địa chỉ</b></label>
+                                <input type="text" class="form-control" value=" @ViewBag.User.DiaChi" required>
+                                <br />
+                            </div>
+                            <div class="col-md-12"><br /></div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1"><b>Mã giảm giá</b></label>
+                                <input type="text" class="form-control" name="magiamgia" placeholder="Nhập mã giảm giá (nếu có) ..." value="@ViewBag.mgg">
+                                <br />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1"><b>&nbsp;</b></label><br />
+                                <button class="success" style="background-color: #7fad39;border:none; height:37px; width: 120px"><i class="fa fa-arrow-circle-o-right"></i>&nbsp; Áp dụng</button>
+                                <br />
+                            </div>
+                            <div class="col-md-12" style="width:360px;margin-bottom:4px">
+                                <br />
+                                <b>Phương thức thanh toán</b>
+                                <br />
+                            </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#tabs-1" role="tab"
+                                               aria-selected="false">Thanh toán tiền mặt</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#tabs-2" role="tab"
+                                               aria-selected="true">Thanh toán online</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="tabs-1" role="tabpanel">
+                                            <div class="product__details__tab__desc">
+                                                <br />
+                                                <p>
+                                                    Thanh toán bằng tiền mặt khi nhận hàng
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane active" id="tabs-2" role="tabpanel">
+                                            <div class="product__details__tab__desc">
+                                                <div class="col-md-9" style="width:360px">
+                                                    <br />
+                                                    <p>
+                                                        Chọn tài khoản thanh toán
+                                                    </p>
+                                                </div>
+                                                @foreach (var item in listTKTT)
+                                                {
+                                                    <div class="col-md-4" style="width:360px;margin:5px 0pX 5px 0px">
+                                                        <a id="logo-bank" href="/Client/Checkout/LoginTaiKhoanThanhToan?idtk=@item.IDTaiKhoan&idnd=@item.IDNguoiDung"><img src="~/Areas/Admin/Content/Photos/@commonDao.getRf_LogoTaiKhoanThanhToan(item.IDTaiKhoan)" alt="" width="30" height="30"><label style="cursor:pointer;color:#495057">&nbsp;@commonDao.getRf_VietTatTaiKhoanThanhToan(item.IDTaiKhoan)</label><br /></a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4>Hoá đơn</h4>
+                            <div class="checkout__order__products">Sản phẩm <span>Thành tiền</span></div>
+                            <ul>
+                                @foreach (var item in Model)
+                                {
+                                    <li>@commonDao.getRf_TenSanPham(item.IDSanPham) <span>@String.Format("{0:n0}", item.ThanhTien)</span></li>
+                                }
+                            </ul>
+
+                            <div style="border-bottom: 1px solid #e1e1e1"><br /></div>
+                            <ul>
+                                <li style="color:black"><b>Tổng tiền hàng</b><span>@String.Format("{0:n0}", ViewBag.donhang.TienHang)</span></li>
+                                <li style="color:black"><b>Phí vận chuyển</b><span>@String.Format("{0:n0}", ViewBag.donhang.TienShip)</span></li>
+                                <li style="color:black"><b>Tiền giảm</b><span>- @String.Format("{0:n0}", ViewBag.donhang.TienGiam)</span></li>
+                                <li style="color:black"><b>Đã thanh toán</b><span>- @String.Format("{0:n0}", ViewBag.DaThanhToan)</span></li>
+                                <li style="color:black"><b>Tổng tiền đơn hàng</b><span style="color:crimson">@String.Format("{0:n0}", ViewBag.donhang.TongTien)</span></li>
+                            </ul>
+                            <button type="submit" class="site-btn">@Html.ActionLink("Xác nhận","XacNhanThanhToan", new { id = ViewBag.donhang.IDDonHang } , new { onclick = "return alert('Đặt hàng thành công');" })</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->
+
+
+@section Scripts{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".quantity input").change(function () {
+                var value = $(".quantity input").text;
+                var item = $(".quantity input").offsetParent().
+                    $("#form1").submit();
+            });
+        });
+    </script>
+    <script src="/Assets/Client/Controller/ShopDetailController.js"></script>
+
+}
+

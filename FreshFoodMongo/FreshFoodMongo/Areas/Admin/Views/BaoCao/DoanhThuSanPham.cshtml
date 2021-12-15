@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DoanhThuSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    THỐNG KÊ DOANH THU CỬA HÀNG
+}
+
+@Html.DevExpress().WebDocumentViewer(settings =>
+{
+    settings.Name = "WebDocumentViewer2";
+}).Bind(new DevExpress.XtraReports.Web.CachedReportSourceWeb(new XtraReport4())).GetHtml()
+

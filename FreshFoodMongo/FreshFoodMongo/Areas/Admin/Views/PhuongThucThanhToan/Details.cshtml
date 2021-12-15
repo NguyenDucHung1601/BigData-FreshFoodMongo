@@ -1,0 +1,32 @@
+﻿@model FreshFoodMongo.Models.DTO.PhuongThucThanhToan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Loại thanh toán - Thông tin thanh toán(#@Model.TenPhuongThucThanhToan)
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên phương thức thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhuongThucThanhToan)
+        </dd>
+    </dl>
+</div>
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDPhuongThucThanhToan })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

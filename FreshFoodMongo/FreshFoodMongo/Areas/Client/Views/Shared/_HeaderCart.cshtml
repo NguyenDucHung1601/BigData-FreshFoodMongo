@@ -1,0 +1,39 @@
+﻿@{
+    FreshFoodMongo.Models.DTO.NguoiDung user;
+    FreshFoodMongo.Models.DAO.Admin.NguoiDungDAO ndDao = new FreshFoodMongo.Models.DAO.Admin.NguoiDungDAO();
+    FreshFoodMongo.Models.DAO.Admin.ChiTietDonHangDAO ctghDao = new FreshFoodMongo.Models.DAO.Admin.ChiTietDonHangDAO();
+    int numItemInCart = 0;
+
+    try
+    {
+        Guid iduser = (Guid)Session["IDUSER_SESSION"];
+        user = ndDao.GetByID(iduser);
+        numItemInCart = ctghDao.GetListChiTietDonHang(user.IDLoaiNguoiDung).Count();
+
+    }
+    catch
+    {
+        user = null;
+    }
+}
+
+<div class="col-lg-3">
+    <div class="header__cart">
+        @if (user != null)
+        {
+            <ul>
+                @*<li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>*@
+                <li><a href="/Client/ShoppingCart/Index/@Session["IDUSER_SESSION"]"><i class="fa fa-shopping-cart"></i> <span>@numItemInCart</span></a></li>
+            </ul>
+            <div class="header__cart__price">Tổng giá trị: <span>@String.Format("{0:n0}", user.TongTienGioHang) VNĐ</span></div>
+        }
+        else
+        {
+            <ul>
+                @*<li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>*@
+                <li><a href="/Client/ShoppingCart/Index/@Session["IDUSER_SESSION"]"><i class="fa fa-shopping-cart"></i> <span>0</span></a></li>
+            </ul>
+            <div class="header__cart__price">Tổng giá trị: <span>0 VNĐ</span></div>
+        }
+    </div>
+</div>

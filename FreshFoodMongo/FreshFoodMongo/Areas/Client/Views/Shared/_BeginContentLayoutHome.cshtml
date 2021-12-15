@@ -1,0 +1,50 @@
+﻿@{
+    FreshFoodMongo.Models.DAO.BaseDAO baseDao = new FreshFoodMongo.Models.DAO.BaseDAO();
+    FreshFoodMongo.Models.DTO.ThongTinLienHe info = baseDao.getDataThongTinLienHe().FirstOrDefault();
+}
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" style="border: solid #80808036 1px; padding:0">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span style="font-size:16px">Danh mục sản phẩm</span>
+                    </div>
+                    <ul style="border: solid white 1px">
+                        @Html.Action("CategoryShow")
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="/Client/Home/Index" method="get">
+                            <input type="text" id="txtKeyword" name="searching" placeholder="Nhập thông tin tìm kiếm... " value="@ViewBag.Searching">
+                            <button type="submit" class="site-btn">Tìm kiếm</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <b>@info.DienThoai1</b><br />
+                            <span>Hỗ trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="/Assets/Client/img/banner.png">
+                    <div class="hero__text">
+                        <img src="~/Assets/Admin/Images/logofull.png" alt="" width="225" style="margin: auto;">
+                        <p style="text-align: center; font-family:Calibri; font-size:18px; color:green; font-weight:bold; margin-top: 10px; margin-bottom: -8px">Thực phẩm sạch 100% hữu cơ</p>
+                        <p style="text-align: center; font-family:Calibri; font-size:17px;">An toàn - Tiện lợi</p>
+                        <a href="/Client/Shop/Index" class="primary-btn" style="margin: auto;">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->

@@ -1,0 +1,134 @@
+﻿@model FreshFoodMongo.Models.DTO.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+}
+
+@section header
+{
+    Sản phẩm - Thông tin sản phẩm ( @Model.MaSo - @Model.Ten )
+}
+
+<div>
+    <table style="width:60%">
+        <td style="vertical-align:top">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <img height="300" width="300" src="~/Areas/Admin/Content/Photos/@Model.HinhAnh" alt="Chưa có" style="border:solid 1px gray; border-radius:10px" />
+                </div>
+            </div>
+        </td>
+        <td>
+            <dl class="dl-horizontal">
+                <dt>
+                    Ngày tạo:
+                </dt>
+
+                <dd>
+                    @Html.Raw(Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy"))
+                </dd>
+                <dt>
+                    Ngày cập nhật:
+                </dt>
+
+                <dd>
+                    @Html.Raw(Convert.ToDateTime(Model.ModifiedDate).ToString("dd/MM/yyyy"))
+                </dd>
+
+                <dt>
+                    Mã số:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MaSo)
+                </dd>
+
+                <dt>
+                    Tên sản phẩm:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Ten)
+                </dd>
+
+                <dt>
+                    Loại sản phẩm:
+                </dt>
+
+                <dd>
+                    @Html.Raw(commonDao.getRf_TenTheLoai(Model.IDTheLoai))
+                </dd>
+
+                <dt>
+                    Đơn vị tính:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DonViTinh)
+                </dd>
+
+                <dt>
+                    Số lượng:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SoLuong)
+                </dd>
+
+                <dt>
+                    Số lượt xem:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SoLuotXem)
+                </dd>
+
+                <dt>
+                    Số lượt mua:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SoLuotMua)
+                </dd>
+
+                <dt>
+                    Giá tiền:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GiaTien) VNĐ
+                </dd>
+
+                <dt>
+                    Giá khuyến mại:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GiaKhuyenMai) VNĐ
+                </dd>
+
+                <dt>
+                    Thông tin:
+                </dt>
+
+                <dd>
+                    <textarea rows="10" cols="150" style="border:none; resize:none; background:white; text-align:justify" disabled>@Html.DisplayFor(model=>model.MoTa)</textarea>
+                </dd>
+            </dl>
+        </td>
+    </table>
+</div>
+
+<br />
+
+<button type="button" class="btn btn-primary btn-admin">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDSanPham })
+</button>
+<button type="button" class="btn btn-warning btn-admin">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

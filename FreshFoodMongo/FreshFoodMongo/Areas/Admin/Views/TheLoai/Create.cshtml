@@ -1,0 +1,49 @@
+﻿@model FreshFoodMongo.Models.DTO.TheLoai
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Thể loại - Thêm thể loại
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Mã thể loại</label>
+                <input type="text" class="form-control" name="maso" placeholder="Nhập mã thể loại ..." value=" @Html.DisplayFor(model => model.MaSo)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Tên thể loại</label>
+                <input type="text" class="form-control" name="ten" placeholder="Nhập tên thể loại ..." value=" @Html.DisplayFor(model => model.Ten)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Mô tả thể loại</label>
+                <input type="text" class="form-control" name="mota" placeholder="Nhập mô tả thể loại ..." value=" @Html.DisplayFor(model => model.MoTa)">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:110px">
+            <a class="fa fa-save"></a> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <a class="fa fa-th-list"></a> &nbsp;
+            @Html.ActionLink("Danh sách", "Index")
+        </button>
+    </div>
+}

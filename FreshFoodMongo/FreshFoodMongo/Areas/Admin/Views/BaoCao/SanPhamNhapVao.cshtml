@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "SanPhamNhapVao";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    THỐNG KÊ SẢN PHẨM NHẬP VÀO
+}
+
+
+@Html.DevExpress().WebDocumentViewer(settings =>
+{
+    settings.Name = "WebDocumentViewer3";
+}).Bind(new DevExpress.XtraReports.Web.CachedReportSourceWeb(new XtraReport5())).GetHtml()

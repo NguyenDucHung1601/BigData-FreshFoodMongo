@@ -1,0 +1,32 @@
+﻿@model FreshFoodMongo.Models.DTO.TrangThai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Trạng thái - Thông tin trạng thái (#@Model.IDTrangThai)
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTrangThai)
+        </dd>
+    </dl>
+</div>
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTrangThai })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.SanPham>
+
+<div class="col-lg-4 col-md-6">
+    <div class="latest-product__text">
+        <h4>Lượt xem nhiều nhất</h4>
+        <div class="latest-product__slider owl-carousel">
+            <div class="latest-prdouct__slider__item">
+                @{ var count = 1;}
+
+                @foreach (var item in Model)
+                {
+
+                    <a href="/ProductDetail/Index/@item.IDSanPham" class="latest-product__item">
+                        <div class="latest-product__item__pic">
+                            <img src="~/Areas/Admin/Content/Photos/@item.HinhAnh" alt="" style="width:130px; height:110px">
+                        </div>
+                        <div class="latest-product__item__text">
+                            <h6>@item.Ten</h6>
+                            <h6>(@item.SoLuotXem <i class="fa fa-eye" style="color:green"></i>)</h6>
+                            <span>@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ</span>
+                        </div>
+                    </a>
+                    if (count == Model.Count())
+                    {
+                        break;
+                    }
+                    if (++count % 3 == 1)
+                    {
+                    @:</div><div class="latest-prdouct__slider__item">
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

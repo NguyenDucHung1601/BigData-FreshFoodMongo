@@ -1,0 +1,11 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.TheLoai>
+
+<li>
+    <a href="/Client/Home/"><i class="fa fa-leaf"></i>&nbsp;&nbsp;Tổng hợp</a>
+</li>
+@foreach (var item in Model)
+{
+    <li>
+        <a href="/Client/Home/IndexByCategory?idcategory=@item.IDTheLoai"><i class="fa fa-leaf"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Ten)</a>
+    </li>
+}

@@ -1,0 +1,100 @@
+﻿@model FreshFoodMongo.Models.DTO.HoaDonNhap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Hóa đơn nhập - Thông tin hóa đơn nhập (#@Model.MaSo.ToString("D6"))
+}
+<div>
+    <table>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        Mã hóa đơn nhập:
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(Model.MaSo.ToString("D6"))
+                    </dd>
+                    <dt>
+                        Nhà cung cấp:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NhaCungCap.Ten)
+                    </dd>
+                    <dt>
+                        Ngày tạo:
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(@Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy"))
+                    </dd>
+
+                    <dt>
+                        Ghi chú:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </dd>
+                    <dt>
+                        Tiền hàng:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienHang) VNĐ
+                    </dd>
+
+                    <dt>
+                        Tiền ship:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienShip) VNĐ
+                    </dd>
+
+                    <dt>
+                        Tiền giảm:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienGiam) VNĐ
+                    </dd>
+
+                    <dt>
+                        Tổng tiền:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TongTien) VNĐ
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <button type="button" class="btn btn-primary" style="width:110px">
+        <a class="fa fa-edit"></a> &nbsp;
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDHoaDonNhap })
+    </button>
+    <button type="button" class="btn btn-warning" style="width:110px">
+        <a class="fa fa-arrow-left"></a> &nbsp;
+        @Html.ActionLink("Trở về", "Index")
+    </button>
+    <br /><br />
+    <hr />
+    <h4>
+        <i class="fa fa-list-ol"></i>
+        <b style="color:darkgreen">&nbsp;Chi tiết hóa đơn nhập</b>
+    </h4>
+    @Html.Action("IndexChiTietHoaDonNhap", new { idhdn = Model.IDHoaDonNhap, idncc = Model.IDNhaCungCap })
+</div>
+<br />
+
+

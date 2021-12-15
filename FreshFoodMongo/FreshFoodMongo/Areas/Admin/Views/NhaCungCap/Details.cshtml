@@ -1,0 +1,70 @@
+﻿@model FreshFoodMongo.Models.DTO.NhaCungCap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Nhà cung cấp - Thông tin nhà cung cấp (@Model.Ten)
+}
+
+<div>
+    <table style="width:60%">
+        <td style="vertical-align:top">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <img height="200" width="200" src="~/Areas/Admin/Content/Photos/@Model.HinhAnh" alt="Chưa có" style="border:solid 1px gray; border-radius:10px" />
+                </div>
+            </div>
+        </td>
+        <td style="vertical-align:top">
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên Nhà Cung cấp:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Ten)
+                </dd>
+
+                <dt>
+                    Địa Chỉ:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DiaChi)
+                </dd>
+
+
+                <dt>
+                    Điện Thoại:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DienThoai)
+                </dd>
+            </dl>
+        </td>
+    </table>
+    <br />
+    <button type="button" class="btn btn-primary">
+        <a class="fa fa-edit"></a> &nbsp;
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDNhaCungCap })
+    </button>
+    <button type="button" class="btn btn-warning" style="width:110px">
+        <a class="fa fa-arrow-left"></a> &nbsp;
+        @Html.ActionLink("Trở về", "Index")
+    </button>
+    <br /><br />
+    <hr />
+    <h4>
+        <i class="fa fa-list-ol"></i>
+        <b style="color:darkgreen">&nbsp;Danh sách Sản phẩm cung ứng</b>
+    </h4>
+    @Html.Action("IndexNhaCungCapSanPham", new { id = Model.IDNhaCungCap })
+</div>
+<br />
+
+

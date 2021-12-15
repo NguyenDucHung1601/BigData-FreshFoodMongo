@@ -1,0 +1,26 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.TheLoai>
+
+<section class="categories">
+    <div class="container">
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="categories__slider owl-carousel">
+                        @foreach (var item in Model)
+                        {
+                            string image = $"{item.MaSo}.png";
+                            <div class="col-lg-3">
+                                <div class="categories__item set-bg" data-setbg="/Areas/Admin/Content/Photos/@image">
+                                    <h5><a href="/Client/Home/IndexByCategory?idcategory=@item.IDTheLoai" style="border-radius:10px">@item.Ten</a></h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

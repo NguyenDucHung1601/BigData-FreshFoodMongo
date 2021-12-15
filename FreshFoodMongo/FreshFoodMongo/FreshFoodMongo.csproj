@@ -1,0 +1,1585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ECEA6C38-E1CA-42B4-9B79-E088CC9BE74E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FreshFoodMongo</RootNamespace>
+    <AssemblyName>FreshFoodMongo</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44377</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.4.0\lib\net471\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson, Version=2.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.14.1\lib\net472\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.14.1\lib\net472\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.14.1\lib\net472\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Libmongocrypt, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Libmongocrypt.1.3.0\lib\net472\MongoDB.Libmongocrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.30.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.30.1\lib\net461\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaoCaoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiTietHoaDonNhapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HoaDonNhapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MaGiamGiaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NguoiDungAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NguoiDungClientController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaCungCapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaCungCapSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhanLoaiKhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhuongThucThanhToanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanThanhToanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TheLoaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongTinLienHeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TKThanhToanNguoiDungController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrangThaiController.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Client\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Client\Controllers\CheckoutController.cs" />
+    <Compile Include="Areas\Client\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Client\Controllers\ProductDetailController.cs" />
+    <Compile Include="Areas\Client\Controllers\ShopController.cs" />
+    <Compile Include="Areas\Client\Controllers\ShoppingCartController.cs" />
+    <Compile Include="Common\CommonVariables.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAO\Admin\ChiTietDonHangDAO.cs" />
+    <Compile Include="Models\DAO\Admin\ChiTietGioHangDAO.cs" />
+    <Compile Include="Models\DAO\Admin\ChiTietHoaDonNhapDAO.cs" />
+    <Compile Include="Models\DAO\Admin\DonHangDAO.cs" />
+    <Compile Include="Models\DAO\Admin\HoaDonNhapDAO.cs" />
+    <Compile Include="Models\DAO\Admin\LoaiNguoiDungDAO.cs" />
+    <Compile Include="Models\DAO\Admin\MaGiamGiaDAO.cs" />
+    <Compile Include="Models\DAO\Admin\MaGiamGiaKhachHangDAO.cs" />
+    <Compile Include="Models\DAO\Admin\NguoiDungDAO.cs" />
+    <Compile Include="Models\DAO\Admin\NhaCungCapDAO.cs" />
+    <Compile Include="Models\DAO\Admin\NhaCungCapSanPhamDAO.cs" />
+    <Compile Include="Models\DAO\Admin\PhanLoaiKhachHangDAO.cs" />
+    <Compile Include="Models\DAO\Admin\PhuongThucThanhToanDAO.cs" />
+    <Compile Include="Models\DAO\Admin\SanPhamDAO.cs" />
+    <Compile Include="Models\DAO\Admin\TaiKhoanThanhToanDAO.cs" />
+    <Compile Include="Models\DAO\Admin\TheLoaiDAO.cs" />
+    <Compile Include="Models\DAO\Admin\ThongTinLienHeDAO.cs" />
+    <Compile Include="Models\DAO\Admin\TKThanhToanNguoiDungDAO.cs" />
+    <Compile Include="Models\DAO\Admin\TrangThaiDAO.cs" />
+    <Compile Include="Models\DAO\CommonDAO.cs" />
+    <Compile Include="Models\DAO\BaseDAO.cs" />
+    <Compile Include="Models\DAO\Client\ClientDonHangDAO.cs" />
+    <Compile Include="Models\DAO\Client\GioHangDAO.cs" />
+    <Compile Include="Models\DAO\Client\ThanhToanDAO.cs" />
+    <Compile Include="Models\DTOplus\flatChangePassword.cs" />
+    <Compile Include="Models\DTOplus\flatNguoiDungMoi.cs" />
+    <Compile Include="Models\DTO\ChiTietDonHang.cs" />
+    <Compile Include="Models\DTO\ChiTietGioHang.cs" />
+    <Compile Include="Models\DTO\ChiTietHoaDonNhap.cs" />
+    <Compile Include="Models\DTO\DonHang.cs" />
+    <Compile Include="Models\DTO\HoaDonNhap.cs" />
+    <Compile Include="Models\DTO\LoaiNguoiDung.cs" />
+    <Compile Include="Models\DTO\MaGiamGia.cs" />
+    <Compile Include="Models\DTO\MaGiamGiaKhachHang.cs" />
+    <Compile Include="Models\DTO\NguoiDung.cs" />
+    <Compile Include="Models\DTO\NhaCungCap.cs" />
+    <Compile Include="Models\DTO\NhaCungCapSanPham.cs" />
+    <Compile Include="Models\DTO\PhanLoaiKhachHang.cs" />
+    <Compile Include="Models\DTO\PhuongThucThanhToan.cs" />
+    <Compile Include="Models\DTO\SanPham.cs" />
+    <Compile Include="Models\DTO\SanPhamKhuyenMai.cs" />
+    <Compile Include="Models\DTO\TaiKhoanThanhToan.cs" />
+    <Compile Include="Models\DTO\TheLoai.cs" />
+    <Compile Include="Models\DTO\ThongTinLienHe.cs" />
+    <Compile Include="Models\DTO\ThongTinNhanHang.cs" />
+    <Compile Include="Models\DTO\TKThanhToanNguoiDung.cs" />
+    <Compile Include="Models\DTO\TrangThai.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\Images\background.png" />
+    <Content Include="Assets\Admin\Images\logoFreshFood-noneBg.png" />
+    <Content Include="Assets\Admin\Images\logoFreshFood-whiteBg.png" />
+    <Content Include="Assets\Admin\Images\logofull.png" />
+    <Content Include="Assets\Admin\Images\logoHTH-noneBg.png" />
+    <Content Include="Assets\Admin\Images\logoHTH-whiteBg.png" />
+    <Content Include="Assets\Admin\LTE\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\Admin\LTE\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\Admin\LTE\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Admin\LTE\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\Admin\LTE\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\Admin\LTE\bootstrap\js\npm.js" />
+    <Content Include="Assets\Admin\LTE\dist\css\AdminLTE.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\AdminLTE.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-black-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-black-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-black.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-black.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-blue-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-blue.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-blue.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-green-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-green-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-green.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-green.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-purple-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-purple.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-purple.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-red-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-red-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-red.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-red.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-yellow-light.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-yellow.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\skin-yellow.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\_all-skins.css" />
+    <Content Include="Assets\Admin\LTE\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Assets\Admin\LTE\dist\img\avatar.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\avatar04.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\avatar2.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\avatar3.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\avatar5.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\boxed-bg.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\boxed-bg.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\american-express.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\cirrus.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\mastercard.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\mestro.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\paypal.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\paypal2.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\visa.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\default-50x50.gif" />
+    <Content Include="Assets\Admin\LTE\dist\img\icons.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\photo1.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\photo2.png" />
+    <Content Include="Assets\Admin\LTE\dist\img\user1-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user2-160x160.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user3-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user4-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user5-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user6-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user7-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\img\user8-128x128.jpg" />
+    <Content Include="Assets\Admin\LTE\dist\js\app.js" />
+    <Content Include="Assets\Admin\LTE\dist\js\app.min.js" />
+    <Content Include="Assets\Admin\LTE\dist\js\demo.js" />
+    <Content Include="Assets\Admin\LTE\dist\js\pages\dashboard.js" />
+    <Content Include="Assets\Admin\LTE\dist\js\pages\dashboard2.js" />
+    <Content Include="Assets\Admin\LTE\Gruntfile.js" />
+    <Content Include="Assets\Admin\LTE\pages\calendar.html" />
+    <Content Include="Assets\Admin\LTE\pages\charts\chartjs.html" />
+    <Content Include="Assets\Admin\LTE\pages\charts\flot.html" />
+    <Content Include="Assets\Admin\LTE\pages\charts\inline.html" />
+    <Content Include="Assets\Admin\LTE\pages\charts\morris.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\404.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\500.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\blank.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\invoice-print.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\invoice.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\lockscreen.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\login.html" />
+    <Content Include="Assets\Admin\LTE\pages\examples\register.html" />
+    <Content Include="Assets\Admin\LTE\pages\forms\advanced.html" />
+    <Content Include="Assets\Admin\LTE\pages\forms\editors.html" />
+    <Content Include="Assets\Admin\LTE\pages\forms\general.html" />
+    <Content Include="Assets\Admin\LTE\pages\layout\boxed.html" />
+    <Content Include="Assets\Admin\LTE\pages\layout\collapsed-sidebar.html" />
+    <Content Include="Assets\Admin\LTE\pages\layout\fixed.html" />
+    <Content Include="Assets\Admin\LTE\pages\layout\top-nav.html" />
+    <Content Include="Assets\Admin\LTE\pages\mailbox\compose.html" />
+    <Content Include="Assets\Admin\LTE\pages\mailbox\mailbox.html" />
+    <Content Include="Assets\Admin\LTE\pages\mailbox\read-mail.html" />
+    <Content Include="Assets\Admin\LTE\pages\tables\data.html" />
+    <Content Include="Assets\Admin\LTE\pages\tables\simple.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\buttons.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\general.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\icons.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\modals.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\sliders.html" />
+    <Content Include="Assets\Admin\LTE\pages\UI\timeline.html" />
+    <Content Include="Assets\Admin\LTE\pages\widgets.html" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-slider\bootstrap-slider.js" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-slider\slider.css" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
+    <Content Include="Assets\Admin\LTE\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\chartjs\Chart.js" />
+    <Content Include="Assets\Admin\LTE\plugins\chartjs\Chart.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\adapters\jquery.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\build-config.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\ckeditor.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\config.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\contents.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\af.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\bg.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\bn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\bs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\cs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\cy.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\da.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\de.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\el.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\en-au.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\en-ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\en-gb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\en.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\eo.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\es.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\et.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\eu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\fa.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\fi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\fo.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\fr-ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\fr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\gl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\gu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\he.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\hi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\hr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\hu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\id.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\is.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\it.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ja.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ka.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\km.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ko.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ku.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\lt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\lv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\mk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\mn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ms.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\nb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\nl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\no.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\pl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\pt-br.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\pt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ro.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ru.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\si.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sq.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sr-latn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\sv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\th.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\tr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\ug.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\uk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\vi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\zh-cn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\lang\zh.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\icons.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\tmp.html" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\icons.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\styles.js" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\bootstrap-colorpicker.css" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\bootstrap-colorpicker.js" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\bootstrap-colorpicker.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\img\alpha-horizontal.png" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\img\alpha.png" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\img\hue-horizontal.png" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\img\hue.png" />
+    <Content Include="Assets\Admin\LTE\plugins\colorpicker\img\saturation.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\dataTables.bootstrap.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\css\dataTables.autoFill.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\css\dataTables.autoFill.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\columns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\complete-callback.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\fill-both.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\fill-horizontal.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\scrolling.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\examples\step-callback.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\images\filler.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\AutoFill\Readme.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\css\dataTables.colReorder.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\css\dataTables.colReorder.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\alt_insert.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\colvis.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\col_filter.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\fixedcolumns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\fixedheader.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\jqueryui.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\new_init.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\predefined.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\realtime.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\reset.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\scrolling.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\server_side.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\examples\state_save.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\images\insert.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\License.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\css\dataTables.colVis.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\css\dataTables.colVis.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\button_order.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\exclude_columns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\group_columns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\jqueryui.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\mouseover.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\new_init.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\restore.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\text.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\title_callback.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\two_tables.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\examples\two_tables_identical.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\js\dataTables.colVis.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\js\dataTables.colVis.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\License.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\css\dataTables.fixedColumns.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\css\dataTables.fixedColumns.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\bootstrap.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\colvis.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\col_filter.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\css_size.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\index_column.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\left_right_columns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\right_column.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\rowspan.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\server-side-processing.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\size_fixed.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\size_fluid.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\examples\two_columns.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\License.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\css\dataTables.fixedHeader.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\css\dataTables.fixedHeader.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\header_footer.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\top_left_right.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\two_tables.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\examples\zIndexes.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedHeader\Readme.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\css\dataTables.keyTable.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\css\dataTables.keyTable.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\examples\events.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\examples\html.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\examples\scrolling.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\KeyTable\Readme.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\css\dataTables.responsive.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\auto.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\classes.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\complexHeader.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\fixedHeader.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\display-control\init-classes.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\default.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\styling\compact.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\examples\styling\scrolling.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\License.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\css\dataTables.scroller.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\css\dataTables.scroller.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\api_scrolling.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\large_js_source.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\server-side_processing.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\examples\state_saving.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\images\loading-background.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Scroller\Readme.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\css\dataTables.tableTools.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\ajax.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\alter_buttons.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\bootstrap.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\button_text.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\collection.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\defaults.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\index.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\jqueryui.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\multiple_tables.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\multi_instance.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\new_init.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\pdf_message.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\plug-in.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\select_column.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\select_multi.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\select_os.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\select_single.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\simple.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\examples\swf_path.html" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\collection.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\collection_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\copy.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\copy_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\csv.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\csv_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\pdf.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\pdf_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\print.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\print_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\xls.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\xls_hover.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\js\dataTables.tableTools.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\swf\copy_csv_xls.swf" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\images\sort_both.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\jquery.dataTables.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\jquery.dataTables_themeroller.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\bootstrap-datepicker.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\datepicker3.css" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.ua.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Assets\Admin\LTE\plugins\datepicker\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Assets\Admin\LTE\plugins\daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="Assets\Admin\LTE\plugins\daterangepicker\daterangepicker.js" />
+    <Content Include="Assets\Admin\LTE\plugins\daterangepicker\moment.js" />
+    <Content Include="Assets\Admin\LTE\plugins\daterangepicker\moment.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\fastclick\fastclick.js" />
+    <Content Include="Assets\Admin\LTE\plugins\fastclick\fastclick.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\excanvas.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\excanvas.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.colorhelpers.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.canvas.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.canvas.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.categories.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.categories.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.crosshair.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.errorbars.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.errorbars.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.image.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.image.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.navigate.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.navigate.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.pie.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.resize.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.selection.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.selection.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.stack.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.stack.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.symbol.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.symbol.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.threshold.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.time.js" />
+    <Content Include="Assets\Admin\LTE\plugins\flot\jquery.flot.time.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Assets\Admin\LTE\plugins\fullcalendar\fullcalendar.js" />
+    <Content Include="Assets\Admin\LTE\plugins\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\all.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\aero%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\aero.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\aero.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\blue%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\blue.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\blue.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\flat%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\flat.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\flat.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\green%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\green.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\green.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\grey%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\grey.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\grey.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\orange%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\orange.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\orange.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\pink%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\pink.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\pink.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\purple%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\purple.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\purple.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\red%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\red.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\red.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\yellow%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\yellow.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\yellow.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\flat\_all.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\futurico\futurico%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\futurico\futurico.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\futurico\futurico.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\icheck.js" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\icheck.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\aero.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\blue.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\green.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\grey.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\line%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\line.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\line.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\orange.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\pink.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\purple.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\red.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\yellow.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\line\_all.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\aero%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\aero.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\aero.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\blue%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\blue.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\blue.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\green%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\green.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\green.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\grey%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\grey.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\grey.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\minimal%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\minimal.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\minimal.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\orange%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\orange.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\orange.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\pink%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\pink.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\pink.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\purple%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\purple.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\purple.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\red%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\red.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\red.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\yellow%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\yellow.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\yellow.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\minimal\_all.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\polaris\polaris%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\polaris\polaris.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\polaris\polaris.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\aero%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\aero.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\aero.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\blue%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\blue.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\blue.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\green%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\green.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\green.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\grey%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\grey.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\grey.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\orange%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\orange.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\orange.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\pink%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\pink.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\pink.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\purple%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\purple.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\purple.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\red%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\red.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\red.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\square%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\square.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\square.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\yellow%402x.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\yellow.css" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\yellow.png" />
+    <Content Include="Assets\Admin\LTE\plugins\iCheck\square\_all.css" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.date.extensions.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.extensions.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\phone-codes\readme.txt" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\img\sprite-skin-flat.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\img\sprite-skin-nice.png" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\ion.rangeSlider.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\ion.rangeSlider.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Assets\Admin\LTE\plugins\ionslider\ion.rangeSlider.skinNice.css" />
+    <Content Include="Assets\Admin\LTE\plugins\jQueryUI\jquery-ui.js" />
+    <Content Include="Assets\Admin\LTE\plugins\jQueryUI\jquery-ui.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\jQuery\jQuery-2.1.4.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\jvectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Assets\Admin\LTE\plugins\jvectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Assets\Admin\LTE\plugins\knob\jquery.knob.js" />
+    <Content Include="Assets\Admin\LTE\plugins\morris\morris.css" />
+    <Content Include="Assets\Admin\LTE\plugins\morris\morris.js" />
+    <Content Include="Assets\Admin\LTE\plugins\morris\morris.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\pace\pace.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\az.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\bg.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\ca.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\cs.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\da.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\de.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\en.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\es.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\et.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\eu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\fa.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\fi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\fr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\gl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\he.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\hi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\hr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\hu.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\id.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\is.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\it.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\ko.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\lt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\lv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\mk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\nb.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\nl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\pl.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\pt-BR.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\pt.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\ro.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\ru.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\sk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\sr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\sv.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\th.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\tr.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\uk.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\vi.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\zh-CN.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\i18n\zh-TW.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.css" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.full.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.full.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.js" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\select2\select2.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\slimScroll\jquery.slimscroll.js" />
+    <Content Include="Assets\Admin\LTE\plugins\slimScroll\jquery.slimscroll.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\sparkline\jquery.sparkline.js" />
+    <Content Include="Assets\Admin\LTE\plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Assets\Admin\LTE\plugins\timepicker\bootstrap-timepicker.css" />
+    <Content Include="Assets\Admin\LTE\plugins\timepicker\bootstrap-timepicker.js" />
+    <Content Include="Assets\Admin\LTE\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="Assets\Admin\LTE\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Assets\Admin\otherAssets\style.css" />
+    <Content Include="Assets\Client\css\bootstrap.min.css" />
+    <Content Include="Assets\Client\css\elegant-icons.css" />
+    <Content Include="Assets\Client\css\font-awesome.min.css" />
+    <Content Include="Assets\Client\css\jquery-ui.min.css" />
+    <Content Include="Assets\Client\css\nice-select.css" />
+    <Content Include="Assets\Client\css\owl.carousel.min.css" />
+    <Content Include="Assets\Client\css\slicknav.min.css" />
+    <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\fonts\ElegantIcons.svg" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Client\img\banner.png" />
+    <Content Include="Assets\Client\img\banner\banner-1.jpg" />
+    <Content Include="Assets\Client\img\banner\banner-2.jpg" />
+    <Content Include="Assets\Client\img\bgbody.png" />
+    <Content Include="Assets\Client\img\blog\blog-1.jpg" />
+    <Content Include="Assets\Client\img\blog\blog-2.jpg" />
+    <Content Include="Assets\Client\img\blog\blog-3.jpg" />
+    <Content Include="Assets\Client\img\blog\blog-4.jpg" />
+    <Content Include="Assets\Client\img\blog\blog-5.jpg" />
+    <Content Include="Assets\Client\img\blog\blog-6.jpg" />
+    <Content Include="Assets\Client\img\blog\details\details-author.jpg" />
+    <Content Include="Assets\Client\img\blog\details\details-hero.jpg" />
+    <Content Include="Assets\Client\img\blog\details\details-pic.jpg" />
+    <Content Include="Assets\Client\img\blog\sidebar\sr-1.jpg" />
+    <Content Include="Assets\Client\img\blog\sidebar\sr-2.jpg" />
+    <Content Include="Assets\Client\img\blog\sidebar\sr-3.jpg" />
+    <Content Include="Assets\Client\img\breadcrumb.png" />
+    <Content Include="Assets\Client\img\cart\cart-1.jpg" />
+    <Content Include="Assets\Client\img\cart\cart-2.jpg" />
+    <Content Include="Assets\Client\img\cart\cart-3.jpg" />
+    <Content Include="Assets\Client\img\categories\cat-1.jpg" />
+    <Content Include="Assets\Client\img\categories\cat-2.jpg" />
+    <Content Include="Assets\Client\img\categories\cat-3.jpg" />
+    <Content Include="Assets\Client\img\categories\cat-4.jpg" />
+    <Content Include="Assets\Client\img\categories\cat-5.jpg" />
+    <Content Include="Assets\Client\img\contactus.png" />
+    <Content Include="Assets\Client\img\featured\feature-1.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-2.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-3.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-4.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-5.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-6.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-7.jpg" />
+    <Content Include="Assets\Client\img\featured\feature-8.jpg" />
+    <Content Include="Assets\Client\img\hero\banner.jpg" />
+    <Content Include="Assets\Client\img\language.png" />
+    <Content Include="Assets\Client\img\latest-product\lp-1.jpg" />
+    <Content Include="Assets\Client\img\latest-product\lp-2.jpg" />
+    <Content Include="Assets\Client\img\latest-product\lp-3.jpg" />
+    <Content Include="Assets\Client\img\logo.png" />
+    <Content Include="Assets\Client\img\payment-item.png" />
+    <Content Include="Assets\Client\img\product\details\product-details-1.jpg" />
+    <Content Include="Assets\Client\img\product\details\product-details-2.jpg" />
+    <Content Include="Assets\Client\img\product\details\product-details-3.jpg" />
+    <Content Include="Assets\Client\img\product\details\product-details-4.jpg" />
+    <Content Include="Assets\Client\img\product\details\product-details-5.jpg" />
+    <Content Include="Assets\Client\img\product\details\thumb-1.jpg" />
+    <Content Include="Assets\Client\img\product\details\thumb-2.jpg" />
+    <Content Include="Assets\Client\img\product\details\thumb-3.jpg" />
+    <Content Include="Assets\Client\img\product\details\thumb-4.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-1.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-2.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-3.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-4.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-5.jpg" />
+    <Content Include="Assets\Client\img\product\discount\pd-6.jpg" />
+    <Content Include="Assets\Client\img\product\product-1.jpg" />
+    <Content Include="Assets\Client\img\product\product-10.jpg" />
+    <Content Include="Assets\Client\img\product\product-11.jpg" />
+    <Content Include="Assets\Client\img\product\product-12.jpg" />
+    <Content Include="Assets\Client\img\product\product-2.jpg" />
+    <Content Include="Assets\Client\img\product\product-3.jpg" />
+    <Content Include="Assets\Client\img\product\product-4.jpg" />
+    <Content Include="Assets\Client\img\product\product-5.jpg" />
+    <Content Include="Assets\Client\img\product\product-6.jpg" />
+    <Content Include="Assets\Client\img\product\product-7.jpg" />
+    <Content Include="Assets\Client\img\product\product-8.jpg" />
+    <Content Include="Assets\Client\img\product\product-9.jpg" />
+    <Content Include="Assets\Client\img\user.png" />
+    <Content Include="Assets\Client\js\bootstrap.min.js" />
+    <Content Include="Assets\Client\js\jquery-3.3.1.min.js" />
+    <Content Include="Assets\Client\js\jquery-ui.min.js" />
+    <Content Include="Assets\Client\js\jquery.nice-select.min.js" />
+    <Content Include="Assets\Client\js\jquery.slicknav.js" />
+    <Content Include="Assets\Client\js\main.js" />
+    <Content Include="Assets\Client\js\mixitup.min.js" />
+    <Content Include="Assets\Client\js\owl.carousel.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
+    <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
+    <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="mongocrypt.dll" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\Admin\LTE\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Assets\Admin\LTE\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Admin\LTE\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Admin\LTE\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Admin\LTE\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\alerts.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\background-variant.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\border-radius.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\buttons.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\center-block.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\clearfix.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\forms.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\gradients.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\grid-framework.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\grid.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\hide-text.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\image.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\labels.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\list-group.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\nav-divider.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\nav-vertical-align.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\opacity.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\pagination.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\panels.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\progress-bar.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\reset-filter.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\resize.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\responsive-visibility.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\size.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\tab-focus.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\table-row.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\text-emphasis.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\text-overflow.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\mixins\vendor-prefixes.less" />
+    <Content Include="Assets\Admin\LTE\build\bootstrap-less\variables.less" />
+    <Content Include="Assets\Admin\LTE\build\less\404_500_errors.less" />
+    <Content Include="Assets\Admin\LTE\build\less\AdminLTE.less" />
+    <Content Include="Assets\Admin\LTE\build\less\alerts.less" />
+    <Content Include="Assets\Admin\LTE\build\less\bootstrap-social.less" />
+    <Content Include="Assets\Admin\LTE\build\less\boxes.less" />
+    <Content Include="Assets\Admin\LTE\build\less\buttons.less" />
+    <Content Include="Assets\Admin\LTE\build\less\callout.less" />
+    <Content Include="Assets\Admin\LTE\build\less\carousel.less" />
+    <Content Include="Assets\Admin\LTE\build\less\control-sidebar.less" />
+    <Content Include="Assets\Admin\LTE\build\less\core.less" />
+    <Content Include="Assets\Admin\LTE\build\less\direct-chat.less" />
+    <Content Include="Assets\Admin\LTE\build\less\dropdown.less" />
+    <Content Include="Assets\Admin\LTE\build\less\forms.less" />
+    <Content Include="Assets\Admin\LTE\build\less\fullcalendar.less" />
+    <Content Include="Assets\Admin\LTE\build\less\header.less" />
+    <Content Include="Assets\Admin\LTE\build\less\info-box.less" />
+    <Content Include="Assets\Admin\LTE\build\less\invoice.less" />
+    <Content Include="Assets\Admin\LTE\build\less\labels.less" />
+    <Content Include="Assets\Admin\LTE\build\less\lockscreen.less" />
+    <Content Include="Assets\Admin\LTE\build\less\login_and_register.less" />
+    <Content Include="Assets\Admin\LTE\build\less\mailbox.less" />
+    <Content Include="Assets\Admin\LTE\build\less\miscellaneous.less" />
+    <Content Include="Assets\Admin\LTE\build\less\mixins.less" />
+    <Content Include="Assets\Admin\LTE\build\less\modal.less" />
+    <Content Include="Assets\Admin\LTE\build\less\navs.less" />
+    <Content Include="Assets\Admin\LTE\build\less\print.less" />
+    <Content Include="Assets\Admin\LTE\build\less\products.less" />
+    <Content Include="Assets\Admin\LTE\build\less\progress-bars.less" />
+    <Content Include="Assets\Admin\LTE\build\less\select2.less" />
+    <Content Include="Assets\Admin\LTE\build\less\sidebar-mini.less" />
+    <Content Include="Assets\Admin\LTE\build\less\sidebar.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-black-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-black.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-blue-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-blue.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-green-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-green.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-purple-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-purple.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-red-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-red.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-yellow-light.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\skin-yellow.less" />
+    <Content Include="Assets\Admin\LTE\build\less\skins\_all-skins.less" />
+    <Content Include="Assets\Admin\LTE\build\less\small-box.less" />
+    <Content Include="Assets\Admin\LTE\build\less\table.less" />
+    <Content Include="Assets\Admin\LTE\build\less\timeline.less" />
+    <Content Include="Assets\Admin\LTE\build\less\users-list.less" />
+    <Content Include="Assets\Admin\LTE\build\less\variables.less" />
+    <Content Include="Assets\Admin\LTE\dist\img\credit\Thumbs.db" />
+    <Content Include="Assets\Admin\LTE\dist\img\Thumbs.db" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\CHANGES.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\LICENSE.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\README.md" />
+    <Content Include="Assets\Admin\LTE\plugins\ckeditor\skins\moono\readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColReorder\Readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\ColVis\Readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\FixedColumns\Readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\css\dataTables.responsive.scss" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\Responsive\Readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="Assets\Admin\LTE\plugins\datatables\extensions\TableTools\Readme.md" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\phone-codes\phone-be.json" />
+    <Content Include="Assets\Admin\LTE\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Assets\Client\fonts\ElegantIcons.eot" />
+    <Content Include="Assets\Client\fonts\ElegantIcons.ttf" />
+    <Content Include="Assets\Client\fonts\ElegantIcons.woff" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Client\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Client\sass\style.scss" />
+    <Content Include="Assets\Client\sass\_base.scss" />
+    <Content Include="Assets\Client\sass\_blog-details.scss" />
+    <Content Include="Assets\Client\sass\_blog-sidebar.scss" />
+    <Content Include="Assets\Client\sass\_blog.scss" />
+    <Content Include="Assets\Client\sass\_breadcrumb.scss" />
+    <Content Include="Assets\Client\sass\_checkout.scss" />
+    <Content Include="Assets\Client\sass\_contact.scss" />
+    <Content Include="Assets\Client\sass\_footer.scss" />
+    <Content Include="Assets\Client\sass\_header.scss" />
+    <Content Include="Assets\Client\sass\_hero.scss" />
+    <Content Include="Assets\Client\sass\_home-page.scss" />
+    <Content Include="Assets\Client\sass\_mixins.scss" />
+    <Content Include="Assets\Client\sass\_responsive.scss" />
+    <Content Include="Assets\Client\sass\_shop-details.scss" />
+    <Content Include="Assets\Client\sass\_shop-grid.scss" />
+    <Content Include="Assets\Client\sass\_shoping-cart.scss" />
+    <Content Include="Assets\Client\sass\_sidebar.scss" />
+    <Content Include="Assets\Client\sass\_variable.scss" />
+    <Content Include="Assets\Client\Source\bootstrap-4.4.1-dist.zip" />
+    <Content Include="Assets\Client\Source\font-awesome-4.7.0.zip" />
+    <Content Include="Assets\Client\Source\jquery-nice-select-1.1.0.zip" />
+    <Content Include="Assets\Client\Source\jquery-ui-1.12.1.zip" />
+    <Content Include="Assets\Client\Source\OwlCarousel2-2.3.4.zip" />
+    <Content Include="Assets\Client\Source\sass.zip" />
+    <Content Include="Assets\Client\Source\SlickNav-master.zip" />
+    <Content Include="libmongocrypt.so" />
+    <Content Include="libmongocrypt.dylib" />
+    <Content Include="Core\Compression\Zstandard\lib\osx\libzstd.dylib" />
+    <Content Include="Core\Compression\Zstandard\lib\linux\libzstd.so" />
+    <Content Include="Core\Compression\Snappy\lib\osx\libsnappy64.dylib" />
+    <Content Include="Core\Compression\Snappy\lib\linux\libsnappy64.so" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Client\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Areas\Client\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Checkout\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Checkout\LoginTaiKhoanThanhToan.cshtml" />
+    <Content Include="Areas\Client\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Home\CategoryShow.cshtml" />
+    <Content Include="Areas\Client\Views\Home\CategoryShowImage.cshtml" />
+    <Content Include="Areas\Client\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Home\IndexByCategory.cshtml" />
+    <Content Include="Areas\Client\Views\Home\LatestProducts.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ListCategoryShow.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ProductFilterShow.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ProductSearchShow.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ProductTopNew.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ProductTopReview.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ProductTopSale.cshtml" />
+    <Content Include="Areas\Client\Views\Home\ReviewProducts.cshtml" />
+    <Content Include="Areas\Client\Views\Home\SaleOff.cshtml" />
+    <Content Include="Areas\Client\Views\Home\TopRatedProducts.cshtml" />
+    <Content Include="Areas\Client\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Login\Register.cshtml" />
+    <Content Include="Areas\Client\Views\ProductDetail\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ProductDetail\RelatedProduct.cshtml" />
+    <Content Include="Areas\Client\Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\ListCategoryShow.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\ProductFilterShow.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\ProductSearchShow.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\ProductTopNew.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\ProductTopSale.cshtml" />
+    <Content Include="Areas\Client\Views\Shop\SaleOff.cshtml" />
+    <Content Include="Areas\Admin\Views\123\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\123\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\123\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\123\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\123\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\DoanhThuSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\KhachHangTiemNang.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\SanPhamBanChay.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\SanPhamBanRa.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoCao\SanPhamNhapVao.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDonHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonNhap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonNhap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\IndexChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonNhap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonNhap\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonNhap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonNhap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonNhap\IndexChiTietHoaDonNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MaGiamGia\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MaGiamGia\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\MaGiamGia\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MaGiamGia\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungAdmin\IndexChiTietGioHang.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungClient\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDungClient\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCapSanPham\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCapSanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\IndexNhaCungCapSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanLoaiKhachHang\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanLoaiKhachHang\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanLoaiKhachHang\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanLoaiKhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhuongThucThanhToan\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PhuongThucThanhToan\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PhuongThucThanhToan\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PhuongThucThanhToan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminlteControlSidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminlteFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminlteMainHeader.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminlteMainSidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanThanhToan\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanThanhToan\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanThanhToan\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoanThanhToan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoai\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoai\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoai\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinLienHe\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinLienHe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TKThanhToanNguoiDung\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TKThanhToanNguoiDung\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TKThanhToanNguoiDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TKThanhToanNguoiDung\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangThai\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangThai\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangThai\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangThai\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_BeginContentLayoutHome.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_BeginContentLayoutOtherHome.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_HeaderCart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_MainLayoutFooter.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_MainLayoutHeader.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Content\Photos\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\DonHang\" />
+    <Folder Include="Areas\Client\Data\" />
+    <Folder Include="Areas\Client\Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62941</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44377/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\MongoDB.Libmongocrypt.1.3.0\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MongoDB.Libmongocrypt.1.3.0\build\MongoDB.Libmongocrypt.targets'))" />
+    <Error Condition="!Exists('..\packages\MongoDB.Driver.Core.2.14.1\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MongoDB.Driver.Core.2.14.1\build\MongoDB.Driver.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\MongoDB.Libmongocrypt.1.3.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.3.0\build\MongoDB.Libmongocrypt.targets')" />
+  <Import Project="..\packages\MongoDB.Driver.Core.2.14.1\build\MongoDB.Driver.Core.targets" Condition="Exists('..\packages\MongoDB.Driver.Core.2.14.1\build\MongoDB.Driver.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

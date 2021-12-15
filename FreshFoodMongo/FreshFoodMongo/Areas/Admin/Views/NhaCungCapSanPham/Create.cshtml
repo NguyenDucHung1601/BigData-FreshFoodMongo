@@ -1,0 +1,47 @@
+﻿@model FreshFoodMongo.Models.DTO.NhaCungCapSanPham
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Nhà cung cấp (@ViewBag.TenNhaCungCap) - Thêm sản phẩm cung ứng
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Sản phẩm cung ứng</label><br />
+                @Html.DropDownList("IDSanpham", (IEnumerable<SelectListItem>)ViewBag.ListSanPham, "  --  Sản phẩm --  ", new { @class = "combobox", @style = "height:32px; width:332px; required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Đơn vị tính</label><br />
+                <input type="text" class="form-control" name="donvitinh" placeholder="Nhập đơn vị tính ..." value=" @Html.DisplayFor(model => model.DonViTinh)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Giá cung ứng (VNĐ)</label><br />
+                <input type="number" min="0" step="1000" class="form-control" name="giacungung" placeholder="Nhập giá cung ứng ..." value=" @Html.DisplayFor(model => model.GiaCungUng)" required>
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary" value="Create" style="width:110px">
+            <i class="fa fa-save"></i> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <a class="fa fa-arrow-left"></a> &nbsp;
+            @Html.ActionLink("Trở về", "Details", "NhaCungCap", new { id = ViewBag.IDNhaCungCap }, null)
+        </button>
+    </div>
+}

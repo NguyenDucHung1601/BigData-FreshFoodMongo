@@ -1,0 +1,73 @@
+﻿@model FreshFoodMongo.Models.DTO.MaGiamGia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Mã giảm giá - Thông tin mã giảm giá (@Model.MaGiamGia1)
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Ngày tạo:
+        </dt>
+
+        <dd>
+            @Html.Raw(Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy"))
+        </dd>
+
+        <dt>
+            Ngày cập nhật:
+        </dt>
+
+        <dd>
+            @Html.Raw(Convert.ToDateTime(Model.ModifiedDate).ToString("dd/MM/yyyy"))
+        </dd>
+
+        <dt>
+            Mã giảm giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaGiamGia1)
+        </dd>
+
+        <dt>
+            Đối tượng áp dụng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DieuKienApDung)
+        </dd>
+
+        <dt>
+            Tiền giảm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienGiam) VNĐ
+        </dd>
+
+        <dt>
+            Hạn sử dụng:
+        </dt>
+
+        <dd>
+            @Html.Raw(Convert.ToDateTime(Model.HanSuDung).ToString("dd/MM/yyyy"))
+        </dd>
+
+    </dl>
+</div>
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDMaGiamGia })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

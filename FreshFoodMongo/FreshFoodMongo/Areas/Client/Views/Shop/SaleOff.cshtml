@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.SanPhamKhuyenMai>
+
+<div class="product__discount">
+    <div class="section-title product__discount__title">
+        <h2>Sản phẩm khuyến mại <i class="fa fa-cart-arrow-down" style="color:green"></i></h2>
+    </div>
+    <div class="row">
+        <div class="product__discount__slider owl-carousel">
+
+            @foreach (var item in Model)
+            {
+                var percent = (item.SanPham.GiaTien - item.GiaKhuyenMai) / (item.SanPham.GiaTien) * 100;
+
+                <div class="col-lg-4">
+                    <div class="product__discount__item">
+                        <div class="product__discount__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@item.SanPham.HinhAnh">
+                            <div class="product__discount__percent"><b>-@percent%</b></div>
+                            <ul class="product__item__pic__hover">
+                                <li><a href="/Client/ProductDetail/Index/@item.IDSanPham"><i class="fa fa-info"></i></a></li>
+                                <li><a href="/Client/ShoppingCart/AddItem?productId=@item.IDSanPham&quantity=1"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__discount__item__text">
+                            <h5>@item.SanPham.Ten</h5>
+                            <div class="product__item__price">@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ <span style="color:crimson">@String.Format("{0:n0}", item.SanPham.GiaTien) VNĐ</span></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

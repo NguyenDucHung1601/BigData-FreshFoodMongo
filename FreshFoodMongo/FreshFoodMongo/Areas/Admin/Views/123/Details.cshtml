@@ -1,0 +1,76 @@
+﻿@model FreshFoodMongo.Models.DTO.ChiTietHoaDonNhap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Chi tiết hóa đơn nhập
+}
+
+<div>
+    <table>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        Tên sản phẩm:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SanPham.Ten)
+                    </dd>
+
+                    <dt>
+                        Đơn vị tính:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DonViTinh)
+                    </dd>
+
+                    <dt>
+                        Đơn giá:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DonGiaNhap)
+                    </dd>
+
+                    <dt>
+                        Số lượng:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoLuong)
+                    </dd>
+
+                    <dt>
+                        Thành tiền:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ThanhTien)
+                    </dd>
+                    <dt>
+                        Ghi chú:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HoaDonNhap.GhiChu)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
+</div>
+<button type="button" class="btn btn-primary btn-admin">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { idhdn = Model.IDHoaDonNhap , idsp = Model.IDSanPham })
+</button>
+<button type="button" class="btn btn-warning btn-admin">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "HoaDonNhaps", "Details" , new { id = Model.IDHoaDonNhap})
+</button>

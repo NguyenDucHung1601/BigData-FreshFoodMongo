@@ -1,0 +1,48 @@
+﻿@model FreshFoodMongo.Models.DTO.TheLoai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Thể loại - Thông tin thể loại (@Model.MaSo)
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Mã thể loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSo)
+        </dd>
+
+        <dt>
+            Tên thể loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+    </dl>
+</div>
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTheLoai })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

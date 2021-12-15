@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.ChiTietHoaDonNhap>
+@{ 
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+}
+
+<button type="button" class="btn btn-success btn-admin" style="margin:5px; margin-left:unset; float:right">
+    <i class="fa fa-plus-square"></i> &nbsp;
+    @Html.ActionLink("Thêm chi tiết hóa đơn", "Create", "ChiTietHoaDonNhap", new { idhdn = ViewBag.IDHoaDonNhap, idncc = ViewBag.IDNhaCungCap }, new { @class = "" })
+</button>
+
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Đơn vị tính
+            </th>
+            <th>
+                Đơn giá (VNĐ)
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Thành tiền (VNĐ)
+            </th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(commonDao.getRf_TenSanPham(item.IDSanPham))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonViTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonGiaNhap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThanhTien)
+                </td>
+                <td>
+                    @*<i class="fa fa-info-circle"></i> &nbsp;
+                        @Html.ActionLink("Xem", "Details", "ChiTietHoaDonNhaps", new { id = item.IDChiTietHoaDonNhap , idhdn = ViewBag.IDHoaDonNhap }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+                    <i class="fa fa-edit"></i> &nbsp;
+                    @Html.ActionLink("Sửa", "Edit", "ChiTietHoaDonNhap", new { id = item.IDChiTietHoaDonNhap, idhdn = ViewBag.IDHoaDonNhap }, new { @class = "" }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash"></i> &nbsp;
+                    @Html.ActionLink("Xóa", "Delete", "ChiTietHoaDonNhap", new { id = item.IDChiTietHoaDonNhap }, new { onclick = "return confirm('Chắc chắn muốn xoá?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

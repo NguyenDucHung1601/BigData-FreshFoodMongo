@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.ChiTietGioHang>
+
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Khách hàng
+            </th>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Thành tiền
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NguoiDung.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanPham.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThanhTien)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.IDChiTietGioHang }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.IDChiTietGioHang }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.IDChiTietGioHang })
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

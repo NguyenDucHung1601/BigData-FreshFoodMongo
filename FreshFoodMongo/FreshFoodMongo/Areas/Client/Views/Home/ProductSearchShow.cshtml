@@ -1,0 +1,44 @@
+﻿<div class="container">
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.Searching))
+        {
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <hr />
+                        <h4>Kết quả tìm kiếm <b style="color:red">"@ViewBag.Searching"</b> (@Model.Count sản phẩm)</h4>
+                    </div>
+                </div>
+            </div>
+
+            if (Model.Count == 0)
+            {
+                <div class="product-title" style="text-align:center">
+                    <h4 style="color:crimson">Không tìm thấy kết quả phù hợp</h4>
+                </div>
+                <br /><br /><br /><br /><br />
+            }
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@item.HinhAnh">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="/Client/ProductDetail/Index/@item.IDSanPham.ToString()"><i class="fa fa-info"></i></a></li>
+                                    <li><a href="/Client/ShoppingCart/AddItem?productId=@item.IDSanPham&quantity=1"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/ShopDetail/Index/@item.IDSanPham">@item.Ten</a></h6>
+                                <h5>@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,117 @@
+﻿@model FreshFoodMongo.Models.DTO.DonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Đơn hàng - Thông tin đơn hàng (#@Model.MaSo.ToString("D6"))
+}
+<div>
+    <table>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        Mã đơn hàng:
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(Model.MaSo.ToString("D6"))
+                    </dd>
+
+                    <dt>
+                        Tên khách hàng:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiDung.Ten)
+                    </dd>
+
+                    <dt>
+                        Phương thức thanh toán:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhuongThucThanhToan.TenPhuongThucThanhToan)
+                    </dd>
+
+                    <dt>
+                        Trạng thái:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TrangThai.TenTrangThai)
+                    </dd>
+
+                    <dt>
+                        Tiền hàng:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienHang)
+                    </dd>
+
+                    <dt>
+                        Tiền ship:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienShip)
+                    </dd>
+
+                    <dt>
+                        Tiền giảm:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TienGiam)
+                    </dd>
+
+                    <dt>
+                        Tổng tiền:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TongTien)
+                    </dd>
+
+                    <dt>
+                        Ngày tạo:
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy")))
+                    </dd>
+
+                    <dt>
+                        Ghi chú:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
+    <br />
+    @*<button type="button" class="btn btn-primary" style="width:110px">
+        <a class="fa fa-save"></a> &nbsp;
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDDonHang })
+    </button>*@
+    <button type="button" class="btn btn-warning" style="width:110px">
+        <a class="fa fa-arrow-left"></a> &nbsp;
+        @Html.ActionLink("Trở về", "Index")
+    </button>
+    <br /><br />
+    <hr />
+    <h4>
+        <i class="fa fa-list-ol"></i>
+        <b style="color:darkgreen">&nbsp;Chi tiết đơn hàng</b>
+    </h4>
+    @Html.Action("IndexChiTietDonHang", new { @id = Model.IDDonHang })
+</div>
+<br />

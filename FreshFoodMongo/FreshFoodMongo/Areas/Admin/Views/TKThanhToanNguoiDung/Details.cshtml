@@ -1,0 +1,53 @@
+﻿@model FreshFoodMongo.Models.DTO.TKThanhToanNguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Tài khoản thanh toán người dùng - Thông tin tài khoản thanh toán ( @Model.TaiKhoan)
+}
+
+<div>
+    <table style="width:60%">
+        <td>
+            <dl class="dl-horizontal">
+                <dt>
+                    Tài khoản
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaiKhoan)
+                </dd>
+
+                <dt>
+                    Password
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+                <dt>
+                    Tổng tiền
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TongTien)
+                </dd>
+            </dl>
+        </td>
+    </table>
+</div>
+
+<br />
+
+<button type="button" class="btn btn-primary btn-admin">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { idnd = Model.IDNguoiDung}, new { idtk = Model.IDTaiKhoan })
+</button>
+<button type="button" class="btn btn-warning btn-admin">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Title{
+    FreshFood HTH | Chi tiết sản phẩm
+}
+
+@section Styles{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li class="active"><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutOtherHome")
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg " data-setbg="/Assets/Client/img/breadcrumb.png">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-12 text-center ">
+                <div class="breadcrumb__text ">
+                    <h2>Chi tiết sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="~/Areas/Admin/Content/Photos/@ViewBag.Product.HinhAnh" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@ViewBag.Product.Ten</h3>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Thể loại: <span style="color:green; font-weight:bold">@ViewBag.Product.TheLoai.Ten</span></div>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Số lượt xem: <span style="color:navy; font-weight:bold">@ViewBag.Product.SoLuotXem</span></div>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Số lượt mua: <span style="color:navy; font-weight:bold">@ViewBag.Product.SoLuotMua</span></div>
+                    <br />
+                    <div class="product__details__price">@String.Format("{0:n0}", ViewBag.Product.GiaKhuyenMai) VNĐ</div>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Đơn vị tính: <span style="color:navy; font-weight:bold">@ViewBag.Product.DonViTinh</span></div>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Số lượng hiện có: <span style="color:navy; font-weight:bold">@ViewBag.Product.SoLuong</span></div>
+                    <br />
+
+                    <form action="/Client/ShoppingCart/AddItem?productId=@Model.IDSanPham&quantity=@Model.SoLuong">
+                        <input type="text" name="productId" value="@Model.IDSanPham" style="visibility:hidden">
+                        <br />
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" name="quantity" value="@Model.SoLuong">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="primary-btn" value="Thêm vào giỏ"/>
+                    </form>
+                    
+                    @*<a href="" class="heart-icon"><span class="icon_heart_alt"></span></a>*@
+                    <br /><br /><div><i class="fa fa-check-circle" style="color:green"></i> Thông tin sản phẩm:</div>
+                    <p style="text-align:justify">@ViewBag.Product.MoTa</p>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
+@Html.Action("RelatedProduct", new { @idtheloai = ViewBag.Product.TheLoai.IDTheLoai })
+
+
+@section Scripts{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".quantity input").change(function () {
+                var value = $(".quantity input").text;
+                var item = $(".quantity input").offsetParent().
+                    $("#form1").submit();
+            });
+        });
+    </script>
+    <script src="/Assets/Client/Controller/ShopDetailController.js"></script>
+
+}
+

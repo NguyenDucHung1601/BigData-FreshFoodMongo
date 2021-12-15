@@ -1,0 +1,56 @@
+﻿@model FreshFoodMongo.Models.DTO.MaGiamGia
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Mã giảm giá - Thêm mã giảm giá
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Mã giảm giá</label>
+                <input type="text" class="form-control" name="magg" placeholder="Nhập mã giảm giá ..." value=" @Html.DisplayFor(model => model.MaGiamGia1)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Đối tượng áp dụng</label><br />
+                @Html.DropDownList("IDLoaiKhachHang", (IEnumerable<SelectListItem>)ViewBag.CustomerCategoryList, "  --  Loại khách hàng  --  ", new { @class = "combobox", @style = "height:32px; width:332px; required" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Tiền giảm</label>
+                <input type="number" min="1000" step="1000" class="form-control" name="tiengiam" placeholder="Nhập tiền giảm ..." value=" @Html.DisplayFor(model => model.TienGiam)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Hạn sử dụng</label>
+                <input type="date" class="form-control" name="hansudung" placeholder="Hạn sử dụng ..." value=@Html.Raw(DateTime.Now)>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:110px">
+            <a class="fa fa-save"></a> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <a class="fa fa-th-list"></a> &nbsp;
+            @Html.ActionLink("Danh sách", "Index")
+        </button>
+    </div>
+}

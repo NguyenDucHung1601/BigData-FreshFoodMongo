@@ -1,0 +1,104 @@
+﻿@model FreshFoodMongo.Models.DTO.ThongTinLienHe
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Thông tin liên hệ cửa hàng
+}
+
+<div>
+    <table style="width:60%">
+        <td style="vertical-align:top">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <img height="200" width="200" src="~/Assets/Admin/Images/logofull.png" alt="Chưa có" />
+                </div>
+            </div>
+        </td>
+        <td>
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên cửa hàng:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TenCuaHang)
+                </dd>
+
+                <dt>
+                    Địa chỉ:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DiaChi)
+                </dd>
+                <dt>
+                    Điện thoại 1:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DienThoai1)
+                </dd>
+                <dt>
+                    Điện thoại 2:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DienThoai2)
+                </dd>
+                <dt>
+                    Giờ mở cửa:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GioMoCua)
+                </dd>
+                <dt>
+                    Email:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    FaceBook:
+                </dt>
+
+                <dd>
+                    <a href="@Html.DisplayFor(model => model.LinkFacebook)" target="_blank">@Html.DisplayFor(model => model.LinkFacebook)</a>
+                </dd>
+                <dt>
+                    Youtube:
+                </dt>
+
+                <dd>
+                    <a href="@Html.DisplayFor(model => model.LinkYoutube)" target="_blank">@Html.DisplayFor(model => model.LinkYoutube)</a>
+                </dd>
+                <dt>
+                    Instagram:
+                </dt>
+
+                <dd>
+                    <a href="@Html.DisplayFor(model => model.LinkInstagram)" target="_blank">@Html.DisplayFor(model => model.LinkInstagram)</a>
+                </dd>
+                <dt>
+                    Ngày Cập Nhật:
+                </dt>
+
+                <dd>
+                    @Html.Raw(@Convert.ToDateTime(Model.ModifiedDate).ToString("dd/MM/yyyy"))
+                </dd>
+            </dl>
+        </td>
+    </table>
+</div>
+<br />
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit")
+</button>

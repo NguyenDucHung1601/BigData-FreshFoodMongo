@@ -1,0 +1,175 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.ChiTietGioHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Title{
+    FreshFoodMongo | Giỏ hàng
+}
+
+@section Styles
+{
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css" type="text/css">
+    <style>
+        button a {
+            color: white;
+        }
+    </style>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <table>
+                    <a href="/Home/Index"><img src="~/Assets/Client/img/logo.png" alt=""></a>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a href="/Client/Home/Index" style="font-size: 17px;">Trang chủ</a></li>
+                    <li class="active"><a href="/Client/Shop/Index" style="font-size: 17px;">Mua hàng</a></li>
+                    <li><a href="/Client/Contact/Index" style="font-size: 17px;">Liên hệ</a></li>
+                    <li><a href="/Client/Account/Index/@Session["IDUSER_SESSION"]" style="font-size: 17px;">Hồ sơ</a></li>
+                </ul>
+            </nav>
+        </div>
+        @Html.Partial("_HeaderCart")
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>
+
+@Html.Partial("_BeginContentLayoutOtherHome")
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg " data-setbg="/Assets/Client/img/breadcrumb.png">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-12 text-center ">
+                <div class="breadcrumb__text ">
+                    <h2>Giỏ hàng</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            @Html.ValidationSummary(true)
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="shoping__product">Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.HiddenFor(modelItem => item.IDChiTietGioHang)
+                                            @*<input type="checkbox" name="duocchon" value="@item.DuocChon">*@
+                                        </td>
+                                        <td class="shoping__cart__item" style="padding-top:10px; padding-bottom:25px">
+                                            <img src="~/Areas/Admin/Content/Photos/@item.SanPham.HinhAnh" alt="" width="100" height="100">
+                                            <h5>@item.SanPham.Ten</h5>
+                                        </td>
+                                        <td class="shoping__cart__price" style="font-weight:normal">
+                                            @if (item.SanPham.GiaKhuyenMai < item.SanPham.GiaTien)
+                                            {
+                                                @String.Format("{0:n0}", item.SanPham.GiaKhuyenMai)
+                                            }
+                                            else
+                                            {
+                                                @String.Format("{0:n0}", item.SanPham.GiaTien)
+                                            }
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty" style="border-radius:10px; background-color:#ebebeb">
+                                                    @*<input type="text" name="soluong" value="@item.SoLuong">*@
+                                                    @Html.EditorFor(modelItem => item.SoLuong)
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total" style="font-weight:normal">
+                                            @String.Format("{0:n0}", item.ThanhTien)
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            @Html.ActionLink("❌", "DeleteItem", new { id = item.IDChiTietGioHang }, new { onclick = "return confirm('Chắc chắn muốn xoá?');" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="button" class="site-btn" style="text-align:left; width:250px"><i class="fa fa-shopping-basket"></i> &nbsp; @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home")</button>
+                    &nbsp;&nbsp;
+                    <input type="submit" class="site-btn" style="text-align:left; width:250px" value="Cập nhật giỏ hàng" />
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout" style="margin-top:0px">
+                        <h5>Tổng kết giỏ hàng</h5>
+                        <ul>
+                            <li>Số sản phẩm <span>@Model.Count()</span></li>
+                            @if (Model.Count() > 0)
+                            {
+                                <li>Tổng tiền hàng <span>@String.Format("{0:n0}", Model.First().NguoiDung.TongTienGioHang) VNĐ</span></li>
+                            }
+                            else
+                            {
+                                <li>Tổng tiền hàng <span>0 VNĐ</span></li>
+                            }
+                        </ul>
+                        <a href="/Client/Checkout/Index/@Session["IDUSER_SESSION"]" class="primary-btn">Tiến hành thanh toán</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- Shoping Cart Section End -->
+
+@section Scripts
+{
+    <script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Client/js/mixitup.min.js"></script>
+    <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/js/main.js"></script>
+}
+

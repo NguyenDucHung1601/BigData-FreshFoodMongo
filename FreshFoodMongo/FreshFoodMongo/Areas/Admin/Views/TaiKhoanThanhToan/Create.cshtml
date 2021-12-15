@@ -1,0 +1,57 @@
+﻿@model FreshFoodMongo.Models.DTO.TaiKhoanThanhToan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Tài khoản thanh toán - Thêm mới
+}
+
+
+
+@using (Html.BeginForm("Create", "TaiKhoanThanhToan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Viết tắt</label><br />
+                <input type="text" class="form-control" name="viettat" placeholder="Nhập tên tài khoản viết tắt ..." value=" @Html.DisplayFor(model => model.VietTat)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Tên đầy đủ</label>
+                <input type="text" class="form-control" name="ten" placeholder="Nhập tên tài khoản đầy đủ..." value=" @Html.DisplayFor(model => model.Ten)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputEmail1">Loại tài khoản</label><br />
+                <input type="text" class="form-control" name="loaitaikhoan" placeholder="Nhập loại tài khoản ..." value=" @Html.DisplayFor(model => model.LoaiTaiKhoan)" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleInputFile">Logo</label>
+                <input type="file" id="hinhanh" name="logo" required>
+            </div>
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary" style="width:110px">
+            <i class="fa fa-save"></i> &nbsp;Lưu lại
+        </button>
+        <button type="button" class="btn btn-warning" style="width:110px">
+            <i class="fa fa-th-list"></i> &nbsp;
+            @Html.ActionLink("Danh sách", "Index")
+        </button>
+    </div>
+}

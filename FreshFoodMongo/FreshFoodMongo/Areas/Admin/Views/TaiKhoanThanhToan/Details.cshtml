@@ -1,0 +1,60 @@
+﻿@model FreshFoodMongo.Models.DTO.TaiKhoanThanhToan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Thông tin Tài khoản thanh toán (@Model.Ten)
+}
+
+<div>
+    <table style="width:30%">
+        <td style="vertical-align:top">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <img height="70" width="70" src="~/Areas/Admin/Content/Photos/@Model.Logo" alt="Chưa có" style="border:solid 1px gray; border-radius:10px" />
+                </div>
+            </div>
+        </td>
+        <td>
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên tài khoản:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Ten)
+                </dd>
+
+                <dt>
+                    Viết tắt:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VietTat)
+                </dd>
+
+                <dt>
+                    Loại tài khoản:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LoaiTaiKhoan)
+                </dd>
+            </dl>
+        </td>
+    </table>
+</div>
+<br />
+
+<button type="button" class="btn btn-primary">
+    <a class="fa fa-edit"></a> &nbsp;
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTaiKhoan })
+</button>
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-th-list"></a> &nbsp;
+    @Html.ActionLink("Danh sách", "Index")
+</button>

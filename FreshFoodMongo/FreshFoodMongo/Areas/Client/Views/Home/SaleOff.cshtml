@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.SanPhamKhuyenMai>
+@{
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+}
+<div class="section-title">
+    <hr />
+    <h3><b>SẢN PHẨM KHUYẾN MẠI</b></h3>
+</div>
+<section class="categories">
+    <div class="container">
+        <br />
+        <br />
+        <div class="row">
+            <div class="product__discount__slider owl-carousel">
+
+                @foreach (var item in Model)
+                {
+                    var percent = (commonDao.getRf_GiaTienSanPham((Guid)item.IDSanPham) - item.GiaKhuyenMai) / commonDao.getRf_GiaTienSanPham((Guid)item.IDSanPham) * 100;
+
+                    <div class="col-lg-12">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@commonDao.getRf_HinhAnhSanPham((Guid)item.IDSanPham)">
+                                <div class="product__discount__percent"><b>-@percent%</b></div>
+                                <ul class="product__item__pic__hover">
+                                    <li><a href="/Client/ProductDetail/Index/@item.IDSanPham"><i class="fa fa-info"></i></a></li>
+                                    <li><a href="/Client/ShoppingCart/AddItem?productId=@item.IDSanPham&quantity=1"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <h5>@commonDao.getRf_TenSanPham((Guid)item.IDSanPham)</h5>
+                                <div class="product__item__price">@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ <span style="color:crimson">@String.Format("{0:n0}", commonDao.getRf_GiaTienSanPham((Guid)item.IDSanPham)) VNĐ</span></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+﻿<div class="container">
+    @{
+        if (!(string.IsNullOrEmpty(ViewBag.ProductName) && string.IsNullOrEmpty(ViewBag.IdCategory) && string.IsNullOrEmpty(ViewBag.PriceFrom) && string.IsNullOrEmpty(ViewBag.PriceTo)))
+        {
+            if (Model.Count > 0)
+            {
+                <div class="product-title" style="text-align:center">
+                    <h4>Kết quả tìm kiếm:  <b style="color:crimson">@Model.Count</b> sản phẩm phù hợp</h4>
+                </div>
+                <br />
+            }
+            if (Model.Count == 0)
+            {
+                <div class="product-title" style="text-align:center">
+                    <h4 style="color:crimson">Không tìm thấy kết quả phù hợp</h4>
+                </div>
+                <br />
+            }
+        }
+    }
+</div>

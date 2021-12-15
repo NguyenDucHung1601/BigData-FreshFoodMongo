@@ -1,0 +1,16 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.TheLoai>
+
+<div class="section-title">
+    <hr />
+    <h3><b>DANH MỤC SẢN PHẨM</b></h3>
+</div>
+<div class="featured__controls">
+    <ul>
+        <li class="active" data-filter="*">Tất cả</li>
+        @foreach (var item in Model)
+        {
+            var filerName = ".c" + item.MaSo;
+            <li data-filter="@filerName">@item.Ten</li>
+        }
+    </ul>
+</div>
