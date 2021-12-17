@@ -52,7 +52,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
                 var filter = Builders<ChiTietGioHang>.Filter.Eq("_id", chiTietGioHang._id);
                 var result = _dbChiTietGioHang.DeleteOne(filter);
 
-                var khachHang = getDataNguoiDung().FirstOrDefault(x => x.IDLoaiNguoiDung == chiTietGioHang.IDKhachHang);
+                var khachHang = getDataNguoiDung().FirstOrDefault(x => x.IDNguoiDung == chiTietGioHang.IDKhachHang);
                 khachHang.TongTienGioHang -= chiTietGioHang.ThanhTien;
                 (new NguoiDungDAO()).Edit(khachHang);
 

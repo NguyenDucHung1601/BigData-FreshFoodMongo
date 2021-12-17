@@ -14,7 +14,7 @@ namespace FreshFoodMongo.Models.DTO
         [BsonElement]
         public Guid IDMaGiamGia { get; set; }
         [BsonElement]
-        public string MaGiamGia1 { get; set; }
+        public string CodeGiamGia { get; set; }
         [BsonElement]
         public decimal TienGiam { get; set; }
         [BsonElement]

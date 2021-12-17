@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<FreshFoodMongo.Models.DTO.TaiKhoanThanhToan>
+﻿@model PagedList.IPagedList<FreshFoodMongo.Models.DTO.NguoiDung>
 @using PagedList.Mvc
 
 @{
@@ -21,6 +21,8 @@
         i++;
         return Convert.ToString(i);
     }
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
@@ -63,14 +65,14 @@
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenLoaiNguoiDung)
+                    @Html.Raw(commonDao.getRf_TenLoaiNguoiDung(item.IDLoaiNguoiDung))
                 </td>
                 <td>
                     @Html.Raw(@Convert.ToDateTime(item.ModifiedDate).ToString("dd/MM/yyyy"))
                 </td>
                 <td>
                     <i class="fa fa-info-circle"></i> &nbsp;
-                    @Html.ActionLink("Xem", "Details", new { id = item.IDUser})
+                    @Html.ActionLink("Xem", "Details", new { id = item.IDNguoiDung})
                 </td>
             </tr>
         }

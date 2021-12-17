@@ -29,7 +29,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
         public void Edit(ThongTinLienHe obj)
         {
             ThongTinLienHe info = GetInfoObj();
-            var filter = Builders<ThongTinLienHe>.Filter.Eq("_id", obj._id);
+            var filter = Builders<ThongTinLienHe>.Filter.Eq("_id", info._id);
             var update = Builders<ThongTinLienHe>.Update
                 .Set("ID", obj.ID)
                 .Set("TenCuaHang", obj.TenCuaHang)

@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<FreshFoodMongo.Models.DTO.ChiTietDonHang>
+@{
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+}
 
 <table id="example1" class="table table-bordered table-striped">
     <thead>
@@ -25,7 +28,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SanPham.Ten)
+                    @Html.Raw(commonDao.getRf_TenSanPham(item.IDSanPham))
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DonViTinh)

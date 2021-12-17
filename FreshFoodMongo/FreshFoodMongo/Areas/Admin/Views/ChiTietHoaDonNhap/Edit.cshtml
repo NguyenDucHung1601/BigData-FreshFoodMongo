@@ -3,11 +3,13 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
 {
-    Hoá đơn nhập (#@Model.HoaDonNhap.MaSo) - Sửa chi tiết hoá đơn (@Model.SanPham.Ten)
+    Hoá đơn nhập (#@commonDao.getRf_MaSoHoaDonNhap(Model.IDHoaDonNhap)) - Sửa chi tiết hoá đơn (@commonDao.getRf_TenSanPham(Model.IDSanPham)
 }
 
 @using (Html.BeginForm())
@@ -18,7 +20,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label for="exampleInputEmail1">Sản phẩm nhập</label><br />
-                <input type="text" class="form-control" value=" @Html.DisplayFor(model => model.SanPham.Ten)" readonly>
+                <input type="text" class="form-control" value=" @Html.Raw(commonDao.getRf_TenSanPham(Model.IDSanPham))" readonly>
             </div>
         </div>
         <div class="form-group">

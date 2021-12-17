@@ -30,7 +30,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
 
         public ChiTietHoaDonNhap GetByID(Guid id)
         {
-            return getDataChiTietHoaDonNhap().Where(x => x.IDHoaDonNhap == id).FirstOrDefault();
+            return getDataChiTietHoaDonNhap().Where(x => x.IDChiTietHoaDonNhap == id).FirstOrDefault();
         }
 
         public void Add(ChiTietHoaDonNhap obj)

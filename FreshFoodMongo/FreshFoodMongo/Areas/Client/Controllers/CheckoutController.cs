@@ -47,7 +47,7 @@ namespace FreshFoodMongo.Areas.Client.Controllers
             {
                 if (cdhDao.KiemTraDoiTuongApDung(mgg, nguoidung))
                 {
-                    TienGiam = baseDao.getDataMaGiamGia().FirstOrDefault(x => x.MaGiamGia1 == mgg).TienGiam;
+                    TienGiam = baseDao.getDataMaGiamGia().FirstOrDefault(x => x.CodeGiamGia == mgg).TienGiam;
                     maGiamGia = mgg;
                 }
             }

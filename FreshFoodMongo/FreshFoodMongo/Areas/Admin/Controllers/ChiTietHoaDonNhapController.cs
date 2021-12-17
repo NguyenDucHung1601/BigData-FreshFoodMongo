@@ -1,5 +1,7 @@
-﻿using FreshFoodMongo.Models.DAO.Admin;
+﻿using FreshFoodMongo.Models.DAO;
+using FreshFoodMongo.Models.DAO.Admin;
 using FreshFoodMongo.Models.DTO;
+using FreshFoodMongo.Models.DTOplus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
 {
     public class ChiTietHoaDonNhapController : Controller
     {
+        CommonDAO commonDao = new CommonDAO();
         ChiTietHoaDonNhapDAO cthdnDao = new ChiTietHoaDonNhapDAO();
         HoaDonNhapDAO hdnDao = new HoaDonNhapDAO();
         SanPhamDAO spDao = new SanPhamDAO();
@@ -32,7 +35,10 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
         public ActionResult Create(Guid idhdn, Guid idncc)
         {
             IEnumerable<NhaCungCapSanPham> listSPCungUng = nccspDao.GetListSPCungUngByIDNhaCungCap(idncc);
-            ViewBag.ListSPCungUng = new SelectList(listSPCungUng, "IDSanPham", "SanPham.Ten", "IDSanPham");
+            var selectList = new List<flatSanPham>();
+            foreach (var item in listSPCungUng)
+                selectList.Add(new flatSanPham { IDSanPham = item.IDSanPham, TenSanPham = commonDao.getRf_TenSanPham(item.IDSanPham) });
+            ViewBag.ListSPCungUng = new SelectList(selectList, "IDSanPham", "TenSanPham", "IDSanPham");
             IDcurHoaDonNhap = idhdn;
             ViewBag.IDHoaDonNhap = idhdn;
             ViewBag.MaSoHoaDonNhap = (hdnDao.GetByID(idhdn)).MaSo;

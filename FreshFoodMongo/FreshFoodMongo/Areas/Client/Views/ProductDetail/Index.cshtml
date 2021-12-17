@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section Title{
@@ -78,7 +80,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3>@ViewBag.Product.Ten</h3>
-                    <div><i class="fa fa-check-circle" style="color:green"></i> Thể loại: <span style="color:green; font-weight:bold">@ViewBag.Product.TheLoai.Ten</span></div>
+                    <div><i class="fa fa-check-circle" style="color:green"></i> Thể loại: <span style="color:green; font-weight:bold">@commonDao.getRf_TenTheLoai(ViewBag.Product.IDTheLoai)</span></div>
                     <div><i class="fa fa-check-circle" style="color:green"></i> Số lượt xem: <span style="color:navy; font-weight:bold">@ViewBag.Product.SoLuotXem</span></div>
                     <div><i class="fa fa-check-circle" style="color:green"></i> Số lượt mua: <span style="color:navy; font-weight:bold">@ViewBag.Product.SoLuotMua</span></div>
                     <br />
@@ -110,7 +112,7 @@
     </div>
 </section>
 <!-- Product Details Section End -->
-@Html.Action("RelatedProduct", new { @idtheloai = ViewBag.Product.TheLoai.IDTheLoai })
+@Html.Action("RelatedProduct", new { @idtheloai = ViewBag.Product.IDTheLoai })
 
 
 @section Scripts{
