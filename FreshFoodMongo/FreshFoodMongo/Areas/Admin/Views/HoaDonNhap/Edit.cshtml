@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 
@@ -24,7 +26,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label for="exampleInputEmail1">Nhà cung cấp</label><br />
-                <input type="text" class="form-control" value=" @Html.DisplayFor(model => model.NhaCungCap.Ten)" readonly>
+                <input type="text" class="form-control" value=" @Html.Raw(commonDao.getRf_TenNhaCungCap(Model.IDNhaCungCap))" readonly>
             </div>
         </div>
         <div class="form-group">

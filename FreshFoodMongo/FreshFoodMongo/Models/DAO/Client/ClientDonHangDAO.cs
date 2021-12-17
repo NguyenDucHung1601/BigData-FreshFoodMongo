@@ -72,10 +72,10 @@ namespace FreshFoodMongo.Models.DAO.Client
         /// <returns></returns>
         public bool KiemTraMaGiamGia(string mgg)
         {
-            var result = getDataMaGiamGia().Any(x => x.MaGiamGia1 == mgg);
+            var result = getDataMaGiamGia().Any(x => x.CodeGiamGia == mgg);
             if (result)
             {
-                var res = getDataMaGiamGia().FirstOrDefault(x => x.MaGiamGia1 == mgg);
+                var res = getDataMaGiamGia().FirstOrDefault(x => x.CodeGiamGia == mgg);
                 if (res.HanSuDung >= DateTime.Now)
                 {
                     return true;
@@ -91,7 +91,7 @@ namespace FreshFoodMongo.Models.DAO.Client
         {
             if (KiemTraMaGiamGia(mgg))
             {
-                var mmgObj = getDataMaGiamGia().FirstOrDefault(x => x.MaGiamGia1 == mgg);
+                var mmgObj = getDataMaGiamGia().FirstOrDefault(x => x.CodeGiamGia == mgg);
                 var res = getDataPhanLoaiKhachHang().FirstOrDefault(x => x.IDLoaiKhachHang == kh.IDLoaiKhachHang);
                 if (commonDao.getRf_CapDoPhanLoaiKhachHang((Guid)mmgObj.IDLoaiKhachHang) == res.CapDo)
                 {

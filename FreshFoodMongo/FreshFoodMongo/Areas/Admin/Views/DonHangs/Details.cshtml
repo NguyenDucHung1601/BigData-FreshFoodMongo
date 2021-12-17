@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
@@ -27,7 +29,7 @@
                     </dt>
 
                     <dd>
-                        @Html.DisplayFor(model => model.NguoiDung.Ten)
+                        @Html.Raw(commonDao.getRf_TenNguoiDung(Model.IDKhachHang))
                     </dd>
 
                     <dt>
@@ -35,7 +37,7 @@
                     </dt>
 
                     <dd>
-                        @Html.DisplayFor(model => model.PhuongThucThanhToan.TenPhuongThucThanhToan)
+                        @Html.Raw(commonDao.getRf_TenPhuongThucThanhToan(Model.IDPhuongThucThanhToan))
                     </dd>
 
                     <dt>
@@ -43,7 +45,7 @@
                     </dt>
 
                     <dd>
-                        @Html.DisplayFor(model => model.TrangThai.TenTrangThai)
+                        @Html.Raw(commonDao.getRf_TenTrangThai(Model.IDTrangThai))
                     </dd>
 
                     <dt>
@@ -99,9 +101,9 @@
     </table>
     <br />
     @*<button type="button" class="btn btn-primary" style="width:110px">
-        <a class="fa fa-save"></a> &nbsp;
-        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDDonHang })
-    </button>*@
+            <a class="fa fa-save"></a> &nbsp;
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDDonHang })
+        </button>*@
     <button type="button" class="btn btn-warning" style="width:110px">
         <a class="fa fa-arrow-left"></a> &nbsp;
         @Html.ActionLink("Trở về", "Index")

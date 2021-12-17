@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
@@ -26,7 +28,7 @@
                     </dt>
 
                     <dd>
-                        @Html.DisplayFor(model => model.NhaCungCap.Ten)
+                        @Html.Raw(commonDao.getRf_TenNhaCungCap(Model.IDNhaCungCap))
                     </dd>
                     <dt>
                         Ngày tạo:

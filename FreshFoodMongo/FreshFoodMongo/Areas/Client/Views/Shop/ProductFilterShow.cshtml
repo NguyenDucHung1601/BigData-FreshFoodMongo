@@ -1,7 +1,10 @@
-﻿<div class="row featured__filter">
+﻿@{
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+}
+<div class="row featured__filter">
     @foreach (var item in Model)
     {
-        var filterName = "c" + item.TheLoai.MaSo;
+        var filterName = "c" + commonDao.getRf_MaSoTheLoai(item.IDTheLoai);
         <div class="col-lg-3 col-md-4 col-sm-4 mix @filterName">
             <div class="featured__item">
                 <div class="featured__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@item.HinhAnh">

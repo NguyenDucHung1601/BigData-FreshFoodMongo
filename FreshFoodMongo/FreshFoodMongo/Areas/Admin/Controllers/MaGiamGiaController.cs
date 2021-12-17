@@ -52,7 +52,7 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
         {
             MaGiamGia magiamgia = new MaGiamGia();
             magiamgia.IDMaGiamGia = Guid.NewGuid();
-            magiamgia.MaGiamGia1 = magg;
+            magiamgia.CodeGiamGia = magg;
             magiamgia.IDLoaiKhachHang = idloaikhachhang;
             magiamgia.DieuKienApDung = (plkhDao.GetByID(idloaikhachhang)).Ten;
             magiamgia.TienGiam = Convert.ToDecimal(tiengiam);
@@ -91,8 +91,8 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
         public ActionResult Edit(Guid id, string magg, Guid idloaikhachhang, string tiengiam, string hansudung)
         {
             MaGiamGia magiamgia = mggDao.GetByID(id);
-            magiamgia.MaGiamGia1 = magg;
-            magiamgia.MaGiamGia1 = magg;
+            magiamgia.CodeGiamGia = magg;
+            magiamgia.CodeGiamGia = magg;
             magiamgia.IDLoaiKhachHang = idloaikhachhang;
             magiamgia.DieuKienApDung = (plkhDao.GetByID(idloaikhachhang)).Ten;
             magiamgia.TienGiam = Convert.ToDecimal(tiengiam);

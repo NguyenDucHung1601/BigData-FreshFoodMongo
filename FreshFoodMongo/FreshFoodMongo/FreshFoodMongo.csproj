@@ -269,6 +269,7 @@
     <Compile Include="Models\DAO\Client\ThanhToanDAO.cs" />
     <Compile Include="Models\DTOplus\flatChangePassword.cs" />
     <Compile Include="Models\DTOplus\flatNguoiDungMoi.cs" />
+    <Compile Include="Models\DTOplus\flatSanPham.cs" />
     <Compile Include="Models\DTO\ChiTietDonHang.cs" />
     <Compile Include="Models\DTO\ChiTietGioHang.cs" />
     <Compile Include="Models\DTO\ChiTietHoaDonNhap.cs" />

@@ -4,6 +4,8 @@
     Layout = null;
 
     var idnd = (Guid)Session["IDUSER_SESSION"];
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 <!DOCTYPE html>
@@ -33,7 +35,7 @@
 <body class="login-page" style="background-image: url(/Assets/Admin/Images/background.png); background-repeat: repeat-x repeat-y">
     <div class="login-box" style="box-shadow: 0px 0px 30px grey">
         <div class="login-box-body">
-            <img src="~/Areas/Admin/Content/Photos/@Model.TaiKhoanThanhToan.Logo" style="margin-left:auto; margin-right:auto; display:block; width:100px; height:100px" />
+            <img src="~/Areas/Admin/Content/Photos/@commonDao.getRf_LogoTaiKhoanThanhToan(Model.IDTaiKhoan)" style="margin-left:auto; margin-right:auto; display:block; width:100px; height:100px" />
             <br />
             <p class="login-box-msg" style="font-size:15px; color:navy"><b>Nhập mật khẩu để thanh toán!</b></p>
             @using (Html.BeginForm("CheckLoginTaiKhoanThanhToan", "Checkout", new { idtktt = Model.IDTaiKhoan }))

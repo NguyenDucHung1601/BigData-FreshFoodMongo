@@ -20,6 +20,8 @@
         i++;
         return Convert.ToString(i);
     }
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
@@ -73,13 +75,13 @@
                     @Html.Raw(item.MaSo.ToString("D6"))
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenKhachHang)
+                    @Html.Raw(commonDao.getRf_TenNguoiDung(item.IDKhachHang))
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenPhuongThucThanhToan)
+                    @Html.Raw(commonDao.getRf_TenPhuongThucThanhToan(item.IDPhuongThucThanhToan))
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenTrangThai)
+                    @Html.Raw(commonDao.getRf_TenTrangThai(item.IDTrangThai))
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TienHang)
@@ -97,7 +99,7 @@
                     @Html.Raw(Convert.ToDateTime(item.CreatedDate).ToString("dd/MM/yyyy"))
                 </td>
                 <td>
-                    @if (item.TenTrangThai == "Chờ xác nhận")
+                    @if (commonDao.getRf_TenTrangThai(item.IDTrangThai) == "Chờ xác nhận")
                     {
                         <i class="fa fa-check-square-o"></i> @*&nbsp;*@
                         @Html.ActionLink("Xác nhận", "Accept", new { id = item.IDDonHang }, new { onclick = "return confirm('Xác nhận đơn hàng?');", @class = "btn_accept" })

@@ -26,5 +26,7 @@ namespace FreshFoodMongo.Models.DAO
         public string getRf_MaSoTheLoai(Guid id) => (new TheLoaiDAO()).GetByID(id).MaSo;
         public string getRf_VietTatTaiKhoanThanhToan(Guid id) => (new TaiKhoanThanhToanDAO()).GetByID(id).VietTat;
         public string getRf_LogoTaiKhoanThanhToan(Guid id) => (new TaiKhoanThanhToanDAO()).GetByID(id).Logo;
+        public int getRf_MaSoHoaDonNhap(Guid id) => (new HoaDonNhapDAO()).GetByID(id).MaSo;
+        public decimal? getRf_TongTienGioHangNguoiDung(Guid id) => (new NguoiDungDAO()).GetByID(id).TongTienGioHang;
     }
 }

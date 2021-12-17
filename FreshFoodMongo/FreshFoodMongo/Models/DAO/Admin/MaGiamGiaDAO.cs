@@ -27,7 +27,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
 
         public string GetMaSo(Guid id)
         {
-            return GetByID(id).MaGiamGia1;
+            return GetByID(id).CodeGiamGia;
         }
 
         public void Add(MaGiamGia obj)
@@ -42,7 +42,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
             {
                 var filter = Builders<MaGiamGia>.Filter.Eq("_id", obj._id);
                 var update = Builders<MaGiamGia>.Update
-                    .Set("MaGiamGia1", obj.MaGiamGia1)
+                    .Set("CodeGiamGia", obj.CodeGiamGia)
                     .Set("TienGiam", obj.TienGiam)
                     .Set("DieuKienApDung", obj.DieuKienApDung)
                     .Set("HanSuDung", obj.HanSuDung);
@@ -67,7 +67,7 @@ namespace FreshFoodMongo.Models.DAO.Admin
         public IEnumerable<MaGiamGia> ListSimple(string searching)
         {
             var list = getDataMaGiamGia()
-                .Where(x => x.MaGiamGia1.ToLower().Contains(searching.ToLower())
+                .Where(x => x.CodeGiamGia.ToLower().Contains(searching.ToLower())
                         || x.TienGiam.ToString().ToLower().Contains(searching.ToLower())
                         || x.HanSuDung.ToString().ToLower().Contains(searching.ToLower())
                         || x.CreatedDate.ToString().ToLower().Contains(searching.ToLower()))

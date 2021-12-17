@@ -108,8 +108,9 @@ namespace FreshFoodMongo.Models.DAO.Admin
                         || commonDao.getRf_TenNguoiDung(x.IDKhachHang).ToLower().Contains(searching.ToLower())
                         || commonDao.getRf_TenTrangThai(x.IDTrangThai).ToLower().Contains(searching.ToLower())
                         || commonDao.getRf_TenPhuongThucThanhToan(x.IDPhuongThucThanhToan).ToLower().Contains(searching.ToLower())
-                        || x.IDDonHang.ToString().ToLower().Contains(searching.ToLower()))
-                 .OrderBy(x => x.CreatedDate);
+                        || x.IDKhachHang.ToString().ToLower().Contains(searching.ToLower()))
+                 .OrderBy(x => x.CreatedDate)
+                 .ToPagedList<DonHang>(PageNum, PageSize);
             return list;
         }
 

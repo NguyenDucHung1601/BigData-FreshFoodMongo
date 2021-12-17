@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section Title{
@@ -98,17 +100,17 @@
                                             @*<input type="checkbox" name="duocchon" value="@item.DuocChon">*@
                                         </td>
                                         <td class="shoping__cart__item" style="padding-top:10px; padding-bottom:25px">
-                                            <img src="~/Areas/Admin/Content/Photos/@item.SanPham.HinhAnh" alt="" width="100" height="100">
-                                            <h5>@item.SanPham.Ten</h5>
+                                            <img src="~/Areas/Admin/Content/Photos/@commonDao.getRf_HinhAnhSanPham(item.IDSanPham)" alt="" width="100" height="100">
+                                            <h5>@commonDao.getRf_TenSanPham(item.IDSanPham)</h5>
                                         </td>
                                         <td class="shoping__cart__price" style="font-weight:normal">
-                                            @if (item.SanPham.GiaKhuyenMai < item.SanPham.GiaTien)
+                                            @if (commonDao.getRf_GiaKhuyenMaiSanPham(item.IDSanPham) < commonDao.getRf_GiaTienSanPham(item.IDSanPham))
                                             {
-                                                @String.Format("{0:n0}", item.SanPham.GiaKhuyenMai)
+                                                @String.Format("{0:n0}", commonDao.getRf_GiaKhuyenMaiSanPham(item.IDSanPham))
                                             }
                                             else
                                             {
-                                                @String.Format("{0:n0}", item.SanPham.GiaTien)
+                                                @String.Format("{0:n0}", commonDao.getRf_GiaTienSanPham(item.IDSanPham))
                                             }
                                         </td>
                                         <td class="shoping__cart__quantity">
@@ -145,7 +147,7 @@
                             <li>Số sản phẩm <span>@Model.Count()</span></li>
                             @if (Model.Count() > 0)
                             {
-                                <li>Tổng tiền hàng <span>@String.Format("{0:n0}", Model.First().NguoiDung.TongTienGioHang) VNĐ</span></li>
+                                <li>Tổng tiền hàng <span>@String.Format("{0:n0}", commonDao.getRf_TongTienGioHangNguoiDung(Model.First().IDKhachHang)).ToString() VNĐ</span></li>
                             }
                             else
                             {
