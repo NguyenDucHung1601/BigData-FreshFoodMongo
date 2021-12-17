@@ -9,6 +9,11 @@ using MongoDB.Driver;
 
 namespace FreshFoodMongo.Models.DAO.Admin
 {
+    public class ProductBestSelling
+    {
+        public Guid Ten { get; set; }
+        public int SoLuongDaBan { get; set; }
+    }
     public class SanPhamDAO : BaseDAO
     {
         CommonDAO commonDao = new CommonDAO();
@@ -17,11 +22,26 @@ namespace FreshFoodMongo.Models.DAO.Admin
             _dbSanPham = getDBSanPham();
         }
 
+        public List<ProductBestSelling> Top5BestSelling()
+        {
+            var spDao = new SanPhamDAO();
+            var lstSanPhamBanChay = getDBChiTietDonHang().AsQueryable()
+                .GroupBy(x => x.IDSanPham)
+                .Select(x => new ProductBestSelling
+                {
+                    Ten = x.Key,
+                    SoLuongDaBan = (int)x.Sum(c => c.SoLuong),
+                }).OrderByDescending(x => x.SoLuongDaBan).Take(5).ToList();
+            return lstSanPhamBanChay;
+        }
         public IEnumerable<SanPham> ListSanPham()
         {
             return getDataSanPham();
         }
-
+        public string GetNameByID(Guid id)
+        {
+            return getDataSanPham().FirstOrDefault(x => x.IDSanPham == id).Ten;
+        }
         public SanPham GetByID(Guid id)
         {
             return getDataSanPham().FirstOrDefault(x => x.IDSanPham == id);

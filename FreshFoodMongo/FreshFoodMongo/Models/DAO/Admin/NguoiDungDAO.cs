@@ -16,7 +16,13 @@ namespace FreshFoodMongo.Models.DAO.Admin
         {
             _dbNguoiDung = getDBNguoiDung();
         }
-
+        public List<NguoiDung> DSKhachHangTiemNang()
+        {
+            return getDataNguoiDung().Where(x => x.IsAdmin.Equals(false))
+                .Where(x => x.TongTienHangDaMua > 500000)
+                .OrderByDescending(x => x.TongTienHangDaMua)
+                .ToList();
+        }
         public NguoiDung GetByUsername(string username)
         {
             return getDataNguoiDung().FirstOrDefault(x => x.Username == username);

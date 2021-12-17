@@ -6,10 +6,9 @@
 
     try
     {
-        Guid iduser = (Guid)Session["IDUSER_SESSION"];
+        Guid iduser = Session["IDUSER_SESSION"] != null ? (Guid)Session["IDUSER_SESSION"] : Guid.NewGuid();
         user = ndDao.GetByID(iduser);
-        numItemInCart = ctghDao.GetListChiTietDonHang(user.IDLoaiNguoiDung).Count();
-
+        numItemInCart = user != null ? ctghDao.GetListChiTietDonHang(user.IDLoaiNguoiDung).Count() : 0;
     }
     catch
     {

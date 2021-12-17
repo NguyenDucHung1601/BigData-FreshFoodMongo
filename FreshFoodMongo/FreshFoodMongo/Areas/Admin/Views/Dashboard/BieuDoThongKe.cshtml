@@ -1,0 +1,283 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DAO.Admin.ProductBestSelling>
+@{
+    ViewBag.Title = "BieuDoThongKe";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLte3Layout.cshtml";
+
+    var lstTop5Product = Model.ToList();
+    var spDao = new FreshFoodMongo.Models.DAO.Admin.SanPhamDAO();
+    var lstThongKeDonHang = ViewBag.ThongKeDonHang as List<int>;
+    var lstThongKeHoaDonNhap = ViewBag.ThongKeHoaDonNhap as List<int>;
+    var lstKhachHangTiemNang = ViewBag.DSKhachHangTiemNang as List<FreshFoodMongo.Models.DTO.NguoiDung>;
+}
+<div class="row">
+    <div class="col-md-6">
+        <!-- /.card -->
+        <!-- DONUT CHART -->
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Biểu đồ thống kê top sản phẩm bán chạy nhất tại cửa hàng</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col (LEFT) -->
+    <div class="col-md-6">
+        <!-- BAR CHART -->
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Biểu đồ thống kê số lượng hóa đơn nhập xuất từng tháng</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div>
+    <!-- /.col (RIGHT) -->
+
+    <div class="col-md-12">
+        <div class="card card-blue">
+            <div class="card-header">
+                <h3 class="card-title">Bảng thống kê danh sách khách hàng tiềm năng</h3>
+            </div>
+            <div class="card-body">
+                <table id="example" class="display">
+                    <thead>
+                        <tr>
+                            <th>Tên khách hàng</th>
+                            <th>Điện thoại</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Số đơn hàng đã mua</th>
+                            <th>Tổng tiền đã mua</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in lstKhachHangTiemNang)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ten)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DienThoai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoDonHangDaMua)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TongTienHangDaMua)
+                                </td>
+                                <td>
+                                    <i class="fa fa-info-circle"></i> &nbsp;
+                                    <a href="/Admin/NguoiDungClient/Details/@item.IDNguoiDung">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        //DataTable
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example thead tr')
+                .clone(true)
+                .addClass('filters')
+                .appendTo('#example thead');
+
+            var table = $('#example').DataTable({
+                orderCellsTop: true,
+                fixedHeader: true,
+                initComplete: function () {
+                    var api = this.api();
+
+                    // For each column
+                    api
+                        .columns()
+                        .eq(0)
+                        .each(function (colIdx) {
+                            // Set the header cell to contain the input element
+                            var cell = $('.filters th').eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+
+                            // On every keypress in this input
+                            $(
+                                'input',
+                                $('.filters th').eq($(api.column(colIdx).header()).index())
+                            )
+                                .off('keyup change')
+                                .on('keyup change', function (e) {
+                                    e.stopPropagation();
+
+                                    // Get the search value
+                                    $(this).attr('title', $(this).val());
+                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                    var cursorPosition = this.selectionStart;
+                                    // Search the column for that value
+                                    api
+                                        .column(colIdx)
+                                        .search(
+                                            this.value != ''
+                                                ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                : '',
+                                            this.value != '',
+                                            this.value == ''
+                                        )
+                                        .draw();
+
+                                    $(this)
+                                        .focus()[0]
+                                        .setSelectionRange(cursorPosition, cursorPosition);
+                                });
+                        });
+                },
+            });
+        });
+
+
+        $(function () {
+            /* ChartJS
+             * -------
+             * Here we will create a few charts using ChartJS
+             */
+
+            //-------------
+            //- DONUT CHART - '#d2d6de'
+            //-------------
+            // Get context with jQuery - using jQuery's .get() method.
+            var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+            var donutData = {
+                labels: [
+                    '@spDao.GetNameByID(lstTop5Product[0].Ten)',
+                    '@spDao.GetNameByID(lstTop5Product[1].Ten)',
+                    '@spDao.GetNameByID(lstTop5Product[2].Ten)',
+                    '@spDao.GetNameByID(lstTop5Product[3].Ten)',
+                    '@spDao.GetNameByID(lstTop5Product[4].Ten)',
+                ],
+                datasets: [
+                    {
+                        data: [
+                            '@lstTop5Product[0].SoLuongDaBan.ToString()',
+                            '@lstTop5Product[1].SoLuongDaBan.ToString()',
+                            '@lstTop5Product[2].SoLuongDaBan.ToString()',
+                            '@lstTop5Product[3].SoLuongDaBan.ToString()',
+                            '@lstTop5Product[4].SoLuongDaBan.ToString()'],
+                        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc'],
+                    }
+                ]
+            }
+            var donutOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+            }
+            //Create pie or douhnut chart
+            // You can switch between pie and douhnut using the method below.
+            new Chart(donutChartCanvas, {
+                type: 'doughnut',
+                data: donutData,
+                options: donutOptions
+            })
+
+
+            //-------------
+            //- BAR CHART -
+            //-------------
+            var barChartDataset = {
+                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8','Tháng 9','Tháng 10', 'Tháng 11','Tháng 12'],
+                datasets: [
+                    {
+                        label: 'Đơn hàng',
+                        backgroundColor: 'rgba(60,141,188,0.9)',
+                        borderColor: 'rgba(60,141,188,0.8)',
+                        pointRadius: false,
+                        pointColor: '#3b8bba',
+                        pointStrokeColor: 'rgba(60,141,188,1)',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: 'rgba(60,141,188,1)',
+                        data: [@lstThongKeDonHang[0], @lstThongKeDonHang[1], @lstThongKeDonHang[2],
+                            @lstThongKeDonHang[3], @lstThongKeDonHang[4], @lstThongKeDonHang[5],
+                            @lstThongKeDonHang[6], @lstThongKeDonHang[7], @lstThongKeDonHang[8],
+                            @lstThongKeDonHang[9], @lstThongKeDonHang[10], @lstThongKeDonHang[11]]
+                    },
+                    {
+                        label: 'Hóa đơn nhập',
+                        backgroundColor: 'rgba(210, 214, 222, 1)',
+                        borderColor: 'rgba(210, 214, 222, 1)',
+                        pointRadius: false,
+                        pointColor: 'rgba(210, 214, 222, 1)',
+                        pointStrokeColor: '#c1c7d1',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: 'rgba(220,220,220,1)',
+                        data: [@lstThongKeHoaDonNhap[0], @lstThongKeHoaDonNhap[1], @lstThongKeHoaDonNhap[2],
+                        @lstThongKeHoaDonNhap[3], @lstThongKeHoaDonNhap[4], @lstThongKeHoaDonNhap[5],
+                        @lstThongKeHoaDonNhap[6], @lstThongKeHoaDonNhap[7], @lstThongKeHoaDonNhap[8],
+                        @lstThongKeHoaDonNhap[9], @lstThongKeHoaDonNhap[10], @lstThongKeHoaDonNhap[11]]
+                    },
+                ]
+            }
+
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = $.extend(true, {}, barChartDataset)
+            var temp0 = barChartDataset.datasets[0]
+            var temp1 = barChartDataset.datasets[1]
+            barChartData.datasets[0] = temp1
+            barChartData.datasets[1] = temp0
+
+            var barChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                datasetFill: false
+            }
+
+            new Chart(barChartCanvas, {
+                type: 'bar',
+                data: barChartData,
+                options: barChartOptions
+            })
+
+        })
+
+    </script>
+}
