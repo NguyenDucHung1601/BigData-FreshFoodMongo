@@ -10,6 +10,7 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
     public class DashboardController : BaseController
     {
         // GET: Admin/Dashboard
+        public SanPhamDAO spDao = new SanPhamDAO();
         public DonHangDAO dhDao = new DonHangDAO();
         public HoaDonNhapDAO hdnDao = new HoaDonNhapDAO();
         public NguoiDungDAO ndDao = new NguoiDungDAO();
@@ -23,6 +24,15 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
             ViewBag.DoanhThu = dhDao.DoanhThu();
             ViewBag.TongSoThanhVien = ndDao.TongSoThanhVien();
             return View();
+        }
+
+        public ActionResult BieuDoThongKe()
+        {
+            var lstSP = spDao.Top5BestSelling();
+            ViewBag.ThongKeDonHang = dhDao.ThongKeDonHang();
+            ViewBag.ThongKeHoaDonNhap = hdnDao.ThongKeHoaDonNhap();
+            ViewBag.DSKhachHangTiemNang = ndDao.DSKhachHangTiemNang();
+            return View(lstSP);
         }
     }
 }

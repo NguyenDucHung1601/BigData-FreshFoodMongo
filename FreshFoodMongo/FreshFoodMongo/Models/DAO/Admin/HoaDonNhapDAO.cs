@@ -17,6 +17,14 @@ namespace FreshFoodMongo.Models.DAO.Admin
             _dbHoaDonNhap = getDBHoaDonNhap();
         }
 
+        public IEnumerable<int> ThongKeHoaDonNhap()
+        {
+            var res = getDataHoaDonNhap()
+                .GroupBy(x => x.CreatedDate.Value.Month)
+                .OrderBy(x => x.Key)
+                .Select(x => x.Count()).ToList();
+            return res;
+        }
         public IEnumerable<HoaDonNhap> ListHoaDonNhap()
         {
             return getDataHoaDonNhap();
