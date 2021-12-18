@@ -1,0 +1,5 @@
+1. MongoDB: CRUD, lọc, tìm kiếm
+2. Tích hợp thư viện Recommender system
+3. Phân tích chất lượng dữ liệu SPSS/abnormally detection
+4. Tích hợp công cụ trực quan hoá dữ liệu
+5. Đề xuất giải pháp làm sạch dữ liệu
