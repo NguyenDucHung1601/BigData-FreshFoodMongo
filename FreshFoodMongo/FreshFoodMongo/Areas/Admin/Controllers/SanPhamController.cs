@@ -33,6 +33,41 @@ namespace FreshFoodMongo.Areas.Admin.Controllers
             return View(spDao.ListSimpleSearch(pageNumber, pagesize, searching));
         }
 
+        public ActionResult CleanDataProduct(int? page, int? PageSize, string searching = "")
+        {
+            ViewBag.SearchString = searching;
+            ViewBag.PageSize = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value="10", Text= "10" },
+                new SelectListItem() { Value="15", Text= "15" },
+                new SelectListItem() { Value="20", Text= "20" },
+                new SelectListItem() { Value="25", Text= "25" },
+                new SelectListItem() { Value="50", Text= "50" }
+            };
+            int pageNumber = (page ?? 1);
+            int pagesize = (PageSize ?? 10);
+            ViewBag.psize = pagesize;
+            ViewBag.Count = spDao.ListSimple(searching).Count();
+            var lstSanPham = spDao.getDataSanPham();
+            var lstSanPhamClean = new List<SanPham>();
+            //Bloom filter : Loại bỏ sản phẩm tên trùng nhau
+            var bloomFilter = new Filter<string>(lstSanPham.Count());
+            foreach (var item in lstSanPham)
+            {
+                if (!bloomFilter.Contains(item.Ten))
+                {
+                    bloomFilter.Add(item.Ten);
+                    lstSanPhamClean.Add(item);
+                }
+                else
+                {
+                    // Loại bỏ sản phẩm bị trùng
+                    spDao.Delete(item.IDSanPham);
+                }
+            }
+            return View(spDao.ListSimpleSearch(pageNumber, pagesize, searching));
+        }
+
         public ActionResult Details(Guid id)
         {
             SanPham sanpham = spDao.GetByID(id);
