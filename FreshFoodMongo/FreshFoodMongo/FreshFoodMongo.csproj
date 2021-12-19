@@ -292,6 +292,7 @@
     <Compile Include="Models\DTO\TKThanhToanNguoiDung.cs" />
     <Compile Include="Models\DTO\TrangThai.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BloomFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AdminLTE3\build\config\postcss.config.js" />
@@ -3662,6 +3663,7 @@
     <Content Include="Assets\AdminLTE3\plugins\summernote\summernote.js.map" />
     <Content Include="Assets\AdminLTE3\plugins\summernote\summernote.min.js.map" />
     <Content Include="Assets\AdminLTE3\plugins\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\SanPham\CleanDataProduct.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

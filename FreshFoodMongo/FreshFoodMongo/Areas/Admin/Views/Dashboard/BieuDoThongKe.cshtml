@@ -190,11 +190,11 @@
             var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
             var donutData = {
                 labels: [
-                    '@spDao.GetNameByID(lstTop5Product[0].Ten)',
-                    '@spDao.GetNameByID(lstTop5Product[1].Ten)',
-                    '@spDao.GetNameByID(lstTop5Product[2].Ten)',
-                    '@spDao.GetNameByID(lstTop5Product[3].Ten)',
-                    '@spDao.GetNameByID(lstTop5Product[4].Ten)',
+                    '@spDao.GetNameByID(lstTop5Product[0].Ten).ToString()',
+                    '@spDao.GetNameByID(lstTop5Product[1].Ten).ToString()',
+                    '@spDao.GetNameByID(lstTop5Product[2].Ten).ToString()',
+                    '@spDao.GetNameByID(lstTop5Product[3].Ten).ToString()',
+                    '@spDao.GetNameByID(lstTop5Product[4].Ten).ToString()',
                 ],
                 datasets: [
                     {
