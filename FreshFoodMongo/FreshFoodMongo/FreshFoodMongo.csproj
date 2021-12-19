@@ -3664,6 +3664,7 @@
     <Content Include="Assets\AdminLTE3\plugins\summernote\summernote.min.js.map" />
     <Content Include="Assets\AdminLTE3\plugins\toastr\toastr.js.map" />
     <Content Include="Areas\Admin\Views\SanPham\CleanDataProduct.cshtml" />
+    <Content Include="Areas\Client\Views\ProductDetail\RecommendProduct.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

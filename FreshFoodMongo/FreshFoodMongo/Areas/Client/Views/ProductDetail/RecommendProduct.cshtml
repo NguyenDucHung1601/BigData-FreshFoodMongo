@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FreshFoodMongo.Models.DTO.SanPham>
+
+<!-- Related Product Section Begin -->
+<section class="related-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <hr />
+                <div class="section-title related__product__title">
+                    <h3><b>SẢN PHẨM GỢI Ý</b></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="/Areas/Admin/Content/Photos/@item.HinhAnh">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="/Client/ProductDetail/Index/@item.IDSanPham.ToString()"><i class="fa fa-info"></i></a></li>
+                                <li><a href="/ShopCart/AddItem?productId=@item.IDSanPham&quantity=1"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="/ShopDetail/Index/@item.IDSanPham.ToString()">@item.Ten</a></h6>
+                            <h5>@String.Format("{0:n0}", item.GiaKhuyenMai) VNĐ</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Related Product Section End -->

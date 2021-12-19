@@ -1,0 +1,66 @@
+﻿{
+  "TrainingTime": 10,
+  "Scenario": "Recommendation",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "H:\\DEV\\Web\\Project Web\\BTLBigData FreshFoodMongo\\Git\\BigData-FreshFoodMongo\\RecommenderSystemAPI\\RecommenderSystemAPI\\TrainingData.txt",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "IDKhachHang",
+        "ColumnPurpose": "User",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "IDSanPham",
+        "ColumnPurpose": "Item",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "Rating",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 0,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -0.3372,
+        "RuntimeInSeconds": 1.4
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -0.3297,
+        "RuntimeInSeconds": 1.7
+      }
+    ],
+    "Pipeline": "[{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"IDKhachHang\"],\"Outputs\":[\"IDKhachHang\"]},{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"IDSanPham\"],\"Outputs\":[\"IDSanPham\"]},{\"LabelColumnName\":\"Rating\",\"MatrixColumnIndexColumnName\":\"IDKhachHang\",\"MatrixRowIndexColumnName\":\"IDSanPham\",\"ApproximationRank\":\"64\",\"LearningRate\":\"0.1\",\"NumberOfIterations\":\"40\",\"EstimatorType\":\"MatrixFactorization\",\"Inputs\":[\"Features\"],\"Outputs\":[\"Score\"]}]",
+    "MetricName": "RSquared"
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
+}

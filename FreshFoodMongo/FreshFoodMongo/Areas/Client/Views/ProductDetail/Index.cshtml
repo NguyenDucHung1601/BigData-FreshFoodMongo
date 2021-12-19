@@ -3,6 +3,7 @@
     Layout = "~/Areas/Client/Views/Shared/_MainLayout.cshtml";
 
     FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
+    var idKhachHang = (Session["IDUSER_SESSION"] != null) ? Session["IDUSER_SESSION"].ToString() : null;
 }
 
 @section Title{
@@ -99,9 +100,9 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="primary-btn" value="Thêm vào giỏ"/>
+                        <input type="submit" class="primary-btn" value="Thêm vào giỏ" />
                     </form>
-                    
+
                     @*<a href="" class="heart-icon"><span class="icon_heart_alt"></span></a>*@
                     <br /><br /><div><i class="fa fa-check-circle" style="color:green"></i> Thông tin sản phẩm:</div>
                     <p style="text-align:justify">@ViewBag.Product.MoTa</p>
@@ -112,6 +113,11 @@
     </div>
 </section>
 <!-- Product Details Section End -->
+@*@if (!string.IsNullOrEmpty(idKhachHang))
+    {
+        Html.Action("RecommendProduct", new { @idtheloai = ViewBag.Product.IDTheLoai });
+    }*@
+@Html.Action("RecommendProduct", new { @idtheloai = ViewBag.Product.IDTheLoai })
 @Html.Action("RelatedProduct", new { @idtheloai = ViewBag.Product.IDTheLoai })
 
 
