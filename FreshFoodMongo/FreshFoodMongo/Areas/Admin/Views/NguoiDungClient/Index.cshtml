@@ -21,6 +21,8 @@
         i++;
         return Convert.ToString(i);
     }
+
+    FreshFoodMongo.Models.DAO.CommonDAO commonDao = new FreshFoodMongo.Models.DAO.CommonDAO();
 }
 
 @section header
@@ -74,7 +76,7 @@
                     <img height="20" width="30" src="~/Areas/Admin/Content/Photos/@item.Avatar" alt="Chưa có" style="border: solid 1px #80808038" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenLoaiKhachHang)
+                    @Html.Raw(commonDao.getRf_TenCapDoPhanLoaiKhachHang(item.IDLoaiKhachHang))
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoDonHangDaMua)
